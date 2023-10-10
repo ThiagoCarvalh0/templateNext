@@ -19,6 +19,7 @@ export default async function Home() {
           <p>{item.id}</p>
         </div>
       ))}
+      <p>Teste Jest!</p>
     </div>
   );
 }
