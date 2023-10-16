@@ -1,9 +1,16 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Josefin_Sans } from 'next/font/google';
 import { Toaster } from '@/components/ui/toaster';
+import Header from './components/ServerSide/Header/Header';
+import Head from 'next/head';
+import { AOSInit } from '@/app/components/ServerSide/AosImport/Aos';
+import Footer from './components/ServerSide/Footer/Footer';
 
-const inter = Inter({ subsets: ['latin'] });
+const Josefin_sans = Josefin_Sans({
+  subsets: ['latin'],
+  variable: '--font-Josefin-sans',
+});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,9 +23,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
-      <body className={inter.className}>
-        <main>{children}</main>
+    <html lang='pt-br'>
+      <Head>
+        <link rel='stylesheet' href='https://unpkg.com/aos@next/dist/aos.css' />
+      </Head>
+      <AOSInit />
+      <body className={Josefin_sans.className}>
+        <main className='relative'>
+          <Header />
+          {children}
+          <Footer />
+        </main>
         <Toaster />
       </body>
     </html>

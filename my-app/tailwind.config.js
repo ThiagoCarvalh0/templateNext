@@ -8,15 +8,22 @@ module.exports = {
     './src/**/*.{ts,tsx}',
 	],
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
+    screens: {
+      sm: "280px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
     },
     extend: {
+      boxShadow: {
+        'b': '0px 6px 5px -4px rgba(0, 0, 0, 1)',
+      },
       colors: {
+        entidades_green: "#0F966F",
+        entidades_gray: "#5D6B5D",
+        entidades_white: "#F2FCF2",
+        entidades_dark_gray: "#3D4A3D",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -52,6 +59,10 @@ module.exports = {
         },
       },
       borderRadius: {
+        'customSm': '4px',
+        'customMd': '6px',
+        'customLg': '12px',
+        'customXl': '16px',
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
@@ -70,6 +81,9 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      fontFamily: {
+        sofia_sans: ["var(--font-Josefin-sans)"]
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],
