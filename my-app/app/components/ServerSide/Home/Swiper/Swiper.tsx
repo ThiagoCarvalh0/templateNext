@@ -17,7 +17,7 @@ import Image from 'next/image';
 const SwiperBanners: React.FC<any> = (conteudo) => {
   return (
     <>
-      <div className='z-10 mt-[5.5rem] w-full sm:hidden lg:block'>
+      <div className='z-10 w-full sm:hidden lg:block'>
         <Swiper
           spaceBetween={30}
           centeredSlides={true}

@@ -1,12 +1,12 @@
 import { fetchWrapper } from '@/services/fetchService';
 import Image from 'next/image';
-import SwiperBanners from './components/ServerSide/Swiper/Swiper';
-import Swiperperview from './components/ServerSide/Parceiros_SwiperPerView/SwiperPerView';
-import ServicosDestaque from './components/ServerSide/ServicosDestaque/ServicosDestaque';
-import QuemSomos from './components/ServerSide/QuemSomos/QuemSomos';
-import Newsletter from './components/ServerSide/Newsletter/Newsletter';
-import GaleriaDeEventos from './components/ServerSide/GaleriaDeEventos/GaleriaDeEventos';
-import ParceriasEConveniosSwiper from './components/ServerSide/ParceriasEConvenios/ParceriasEConvenios';
+import SwiperBanners from './components/ServerSide/Home/Swiper/Swiper';
+import Swiperperview from './components/ServerSide/Home/Parceiros_SwiperPerView/SwiperPerView';
+import ServicosDestaque from './components/ServerSide/Home/ServicosDestaque/ServicosDestaque';
+import QuemSomos from './components/ServerSide/Home/QuemSomos/QuemSomos';
+import Newsletter from './components/ServerSide/Home/Newsletter/Newsletter';
+import GaleriaDeEventos from './components/ServerSide/Home/GaleriaDeEventos/GaleriaDeEventos';
+import ParceriasEConveniosSwiper from './components/ServerSide/Home/ParceriasEConvenios/ParceriasEConvenios';
 
 // type PostProps = {
 //   id: number;

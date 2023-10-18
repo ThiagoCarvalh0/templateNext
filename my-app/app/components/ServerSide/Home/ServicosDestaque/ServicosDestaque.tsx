@@ -70,6 +70,7 @@ const ServicosDestaque = () => {
         <Card
           data-aos='fade-right'
           data-aos-delay='350'
+          data-aos-offset='120'
           className='rounded-customMd shadow-xl'
         >
           <Image
