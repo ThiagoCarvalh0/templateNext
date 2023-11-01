@@ -1,7 +1,7 @@
 function Footer() {
   return (
-    <div className='flex justify-between px-14 pb-12 pt-9'>
-      <div className='text-xl'>
+    <div className='relative flex justify-between px-14 pb-12 pt-9'>
+      <div className='text-sm lg:text-xl'>
         <p>Rua Barão de Melgaço,</p>
         <p>2754 - Ed. Work Tower,</p>
         <p>Sala 1606 - Centro Sul</p>
@@ -119,7 +119,7 @@ function Footer() {
         viewBox='0 0 130 130'
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
-        className='-mt-16'
+        className='absolute -top-8 right-8 h-24 w-24 sm:right-16 '
       >
         <g filter='url(#filter0_d_1_339)'>
           <circle cx='65' cy='62' r='62' fill='white' />

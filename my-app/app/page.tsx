@@ -1,12 +1,19 @@
-// import { fetchWrapper } from '@/services/fetchService';
+'use client';
+
 import About from '@/components/sessions/About';
 import Cards from '@/components/sessions/Cards';
 import Carousel from '@/components/sessions/Carousel';
 import Footer from '@/components/sessions/Footer';
 import Form from '@/components/sessions/Form';
 import Header from '@/components/sessions/Header';
+import Options from '@/components/sessions/Options';
 import OurClients from '@/components/sessions/OurClients';
+// import { fetchWrapper } from '@/services/fetchService';
 import Products from '@/components/sessions/Products';
+
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 
 // type PostProps = {
 //   id: number;
@@ -32,6 +39,12 @@ import Products from '@/components/sessions/Products';
 // }
 
 function Home() {
+  useEffect(() => {
+    AOS.init({
+      once: true,
+    });
+  }, []);
+
   return (
     <div>
       <Header />
@@ -40,6 +53,7 @@ function Home() {
       <About />
       <Products />
       <OurClients />
+      <Options />
       <Form />
       <Footer />
     </div>

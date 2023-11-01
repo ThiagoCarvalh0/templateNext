@@ -1,8 +1,8 @@
 'use client';
 
 import { ArrowLeftCircleIcon, ArrowRightCircleIcon } from 'lucide-react';
-import Image from 'next/image';
 import { useState } from 'react';
+import ItemCarousel from '../layout/ItemCarousel';
 
 function Carousel() {
   const [index, setIndex] = useState(0);
@@ -16,47 +16,29 @@ function Carousel() {
   }
 
   return (
-    <div className='bg-GrayGAC flex h-[553px] w-full items-center justify-center px-16 text-white'>
+    <div className='group relative flex h-[553px] w-full items-center justify-center bg-GrayGAC px-16 text-white '>
       <>
         <ArrowLeftCircleIcon
-          className='h-14 w-14'
+          className='group-hover:animate-fade-in absolute left-8 hidden h-14 w-14 cursor-pointer group-hover:flex'
           strokeWidth='1'
           onClick={prevIndex}
         />
         {index === 0 && (
-          <div className='mx-24 flex flex-col items-center justify-center'>
-            <Image
-              width={1280}
-              height={1280}
-              src='/images/whiteIcon.png'
-              alt={''}
-              className='mb-6 h-[141px] w-[327px] object-scale-down'
-            />
-            <h1 className='mb-3 text-[46px] '>BEM VINDO AO E-GAC</h1>
-            <p className='w-full text-center font-light'>
-              SISTEMA PARA AUTORIDADE CERTIFICADORA / SISTEMA PARA AUTORIDADE DE
-              REGISTRO PLATAFORMA DIGITAL PARA GESTÃO E CONTROLE DE TODA CADEIA
-              DE VENDAS E EMISSÃO DE CERTIFICADOS DIGITAIS.
-            </p>
-          </div>
+          <ItemCarousel
+            title='BEM-VINDO AO E-GAC'
+            description='SISTEMA PARA AUTORIDADE CERTIFICADORA / SISTEMA PARA AUTORIDADE DE REGISTRO PLATAFORMA DIGITAL PARA GESTÃO E CONTROLE DE TODA CADEIA DE VENDAS E EMISSÃO DE CERTIFICADOS DIGITAIS.'
+          />
         )}
 
         {index === 1 && (
-          <div className='mx-24 flex flex-col items-center justify-center'>
-            <Image
-              width={1280}
-              height={1280}
-              src='/images/whiteIcon.png'
-              alt={''}
-              className='mb-6 h-[141px] w-[327px] object-scale-down'
-            />
-            <h1 className='mb-3 text-[46px] '>TESTE</h1>
-            <p className='w-full text-center font-light'>TESTE TESTE TESTE</p>
-          </div>
+          <ItemCarousel
+            title='CONHEÇA MAIS'
+            description='GESTÃO PARA AUTORIDADE DE REGISTRO CONHEÇA MAIS SOBRE O NOSSO PRODUTO'
+          />
         )}
 
         <ArrowRightCircleIcon
-          className='h-14 w-14'
+          className='group-hover:animate-fade-in absolute right-8 hidden h-14 w-14 cursor-pointer group-hover:flex'
           strokeWidth='1'
           onClick={nextIndex}
         />

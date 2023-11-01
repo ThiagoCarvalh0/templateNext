@@ -1,8 +1,18 @@
 function About() {
   return (
-    <div className='bg-LightBlueGAC px-20 py-24'>
-      <h1 className='mb-8 text-[60px]'>Sobre nós</h1>
-      <article className='flex flex-col gap-y-4 text-xl font-light'>
+    <div className='bg-LightBlueGAC px-8 py-10 lg:px-20 lg:py-24'>
+      <h1
+        className='mb-8 text-xl lg:text-[60px]'
+        data-aos='fade-right'
+        data-aos-duration='800'
+      >
+        Sobre nós
+      </h1>
+      <article
+        className='flex flex-col gap-y-4 text-sm font-light lg:text-xl'
+        data-aos='fade-right'
+        data-aos-duration='800'
+      >
         <p>
           O e-GAC surgiu da necessidades de empresas distribuidoras e emissoras
           de certificados digitais sustentarem suas operações e processos. Dessa

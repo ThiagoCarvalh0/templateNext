@@ -2,17 +2,23 @@ import Image from 'next/image';
 
 function Products() {
   return (
-    <div className='flex flex-col px-12 pt-28'>
-      <div className='mb-40 flex items-center justify-center gap-x-28'>
+    <div className='flex flex-col px-12 pt-28 lg:pb-14'>
+      <div
+        className='mb-8 flex flex-col items-center justify-center gap-x-28 lg:mb-40 lg:flex-row'
+        data-aos='fade-up'
+        data-aos-duration='800'
+      >
         <Image
           src='/images/coloredIcon.png'
           alt={''}
           width={1280}
           height={1280}
-          className='h-[203px] w-[471px]'
+          className='h-[203px] w-[471px] object-scale-down'
         />
         <div>
-          <h1 className='mb-11 text-5xl'>Nossos Produtos</h1>
+          <h1 className='mb-11 text-center text-5xl lg:text-start'>
+            Nossos Produtos
+          </h1>
 
           <p className='text-xl font-light'>
             Oferecemos um conjunto completo de soluções para o gerenciamento de
@@ -23,8 +29,12 @@ function Products() {
         </div>
       </div>
 
-      <div className='border-GrayGAC divide-GrayGAC grid h-[341px] grid-cols-3 justify-center divide-x border-b'>
-        <div className='flex h-full flex-col items-center justify-center px-12'>
+      <div
+        className='grid h-full grid-cols-1 justify-center gap-y-10 lg:grid-cols-3 lg:gap-y-0 lg:divide-x lg:divide-GrayGAC lg:border-b lg:border-GrayGAC'
+        data-aos='fade-up'
+        data-aos-duration='800'
+      >
+        <div className='flex h-full flex-col items-center justify-center px-12 pt-8 lg:pb-14 lg:pt-0'>
           <svg
             className='mb-9'
             width='101'
@@ -56,7 +66,7 @@ function Products() {
           </p>
         </div>
 
-        <div className='flex h-full flex-col items-center justify-center px-12'>
+        <div className='flex h-full flex-col items-center justify-center px-12 lg:pb-14'>
           <svg
             className='mb-9'
             width='117'
@@ -86,7 +96,7 @@ function Products() {
           </p>
         </div>
 
-        <div className='flex h-full flex-col items-center justify-center px-12'>
+        <div className='flex h-full flex-col items-center justify-center px-12 lg:pb-14'>
           <svg
             className='mb-9'
             width='79'

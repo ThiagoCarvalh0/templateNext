@@ -2,7 +2,11 @@ import Image from 'next/image';
 
 function Form() {
   return (
-    <div className='bg-LightBlueGAC grid grid-cols-2 gap-x-8 px-12 pt-24'>
+    <div className='grid grid-cols-1 gap-x-8 bg-LightBlueGAC px-8 pb-10 pt-24 lg:grid-cols-2 lg:px-12 lg:pb-4'>
+      {/*
+          - Falta adicionar a funcionalidade de enviar a mensagem. 
+          (nessecita endereço endpoint para concluir.)
+      */}
       <form action='' className='grid grid-cols-2 gap-x-12 gap-y-10'>
         <input
           type='text'
@@ -59,21 +63,27 @@ function Form() {
         />
       </form>
       <div>
-        <h1 className='mb-9 text-3xl'>Entre em contato</h1>
-        <p className='mb-2 text-xl font-light'>
+        <h1 className='mb-9 text-xl lg:text-3xl'>Entre em contato</h1>
+        <p className='text-md mb-2 font-light lg:text-xl'>
           Queremos ouvir você! Envie uma mensagem e a nossa equipe retornará!
         </p>
-        <p className='mb-2 text-xl font-light'>
+        <p className='text-md mb-2 font-light lg:text-xl'>
           Endereço: Rua Barão de Melgaço, 2754 - Ed. Work Tower, Sala 1606 -
           Centro Sul - CEP: 78040-365 - Cuiabá, MT
         </p>
-        <p className='mb-2 text-xl font-light'>Telefone: +55 65 3051-5900</p>
-        <p className='mb-2 text-xl font-light'>Enviar Mensagem no WhatsApp</p>
-        <p className='mb-2 text-xl font-light'>
+        <p className='text-md mb-2 font-light lg:text-xl'>
+          Telefone: +55 65 3051-5900
+        </p>
+        <p className='text-md mb-2 font-light lg:text-xl'>
+          Enviar Mensagem no WhatsApp
+        </p>
+        <p className='text-md mb-2 font-light lg:text-xl'>
           Email: atendimento@egac.com.br
         </p>
-        <p className='mb-2 text-xl font-light'>Website: www.egac.com.br</p>
-        <p className='mb-14 text-xl font-light'>
+        <p className='text-md mb-2 font-light lg:text-xl'>
+          Website: www.egac.com.br
+        </p>
+        <p className='text-md mb-14 font-light lg:text-xl'>
           www.sistemaautoridaderegistro.com.br
         </p>
         <Image
