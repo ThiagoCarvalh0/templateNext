@@ -7,7 +7,11 @@ function Form() {
           - Falta adicionar a funcionalidade de enviar a mensagem. 
           (nessecita endereço endpoint para concluir.)
       */}
-      <form action='' className='grid grid-cols-2 gap-x-12 gap-y-10'>
+      <form
+        action=''
+        className='grid grid-cols-2 gap-x-12 gap-y-10'
+        data-aos='fade-up'
+      >
         <input
           type='text'
           placeholder='Nome'
@@ -62,7 +66,7 @@ function Form() {
           height={1280}
         />
       </form>
-      <div>
+      <div data-aos='fade-up'>
         <h1 className='mb-9 text-xl lg:text-3xl'>Entre em contato</h1>
         <p className='text-md mb-2 font-light lg:text-xl'>
           Queremos ouvir você! Envie uma mensagem e a nossa equipe retornará!

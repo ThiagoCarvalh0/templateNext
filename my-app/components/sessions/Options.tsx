@@ -1,6 +1,10 @@
 function Options() {
   return (
-    <div className='flex flex-col items-center justify-center pb-24'>
+    <div
+      className='flex flex-col items-center justify-center pb-24'
+      data-aos='fade-up'
+      data-aos-duration='800'
+    >
       <svg
         className='mb-14'
         width='216'

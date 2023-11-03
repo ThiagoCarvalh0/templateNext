@@ -4,6 +4,7 @@ function OurClients() {
   return (
     <div
       className='mb-32 flex flex-col items-center justify-center pt-36'
+      id='client'
       data-aos='fade-up'
       data-aos-duration='800'
     >

@@ -16,10 +16,13 @@ function Carousel() {
   }
 
   return (
-    <div className='group relative flex h-[553px] w-full items-center justify-center bg-GrayGAC px-16 text-white '>
+    <div
+      id='carousel'
+      className='group relative flex h-[553px] w-full items-center justify-center bg-GrayGAC px-16 text-white '
+    >
       <>
         <ArrowLeftCircleIcon
-          className='group-hover:animate-fade-in absolute left-8 hidden h-14 w-14 cursor-pointer group-hover:flex'
+          className='absolute left-8 hidden h-14 w-14 cursor-pointer group-hover:flex group-hover:animate-fade-in'
           strokeWidth='1'
           onClick={prevIndex}
         />
@@ -38,7 +41,7 @@ function Carousel() {
         )}
 
         <ArrowRightCircleIcon
-          className='group-hover:animate-fade-in absolute right-8 hidden h-14 w-14 cursor-pointer group-hover:flex'
+          className='absolute right-8 hidden h-14 w-14 cursor-pointer group-hover:flex group-hover:animate-fade-in'
           strokeWidth='1'
           onClick={nextIndex}
         />

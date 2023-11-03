@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 function Products() {
   return (
-    <div className='flex flex-col px-12 pt-28 lg:pb-14'>
+    <div className='flex flex-col px-12 pt-28 lg:pb-14' id='product'>
       <div
         className='mb-8 flex flex-col items-center justify-center gap-x-28 lg:mb-40 lg:flex-row'
         data-aos='fade-up'

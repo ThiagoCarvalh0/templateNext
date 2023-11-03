@@ -1,7 +1,13 @@
+import { Link } from 'react-scroll';
+
 function Footer() {
   return (
     <div className='relative flex justify-between px-14 pb-12 pt-9'>
-      <div className='text-sm lg:text-xl'>
+      <div
+        className='text-sm lg:text-xl'
+        data-aos='fade-right'
+        data-aos-duration='800'
+      >
         <p>Rua Barão de Melgaço,</p>
         <p>2754 - Ed. Work Tower,</p>
         <p>Sala 1606 - Centro Sul</p>
@@ -113,56 +119,60 @@ function Footer() {
         </div>
       </div>
 
-      <svg
-        width='130'
-        height='130'
-        viewBox='0 0 130 130'
-        fill='none'
-        xmlns='http://www.w3.org/2000/svg'
-        className='absolute -top-8 right-8 h-24 w-24 sm:right-16 '
-      >
-        <g filter='url(#filter0_d_1_339)'>
-          <circle cx='65' cy='62' r='62' fill='white' />
-        </g>
-        <path d='M65.5 40L87.5836 73H43.4164L65.5 40Z' fill='#DBEFED' />
-        <defs>
-          <filter
-            id='filter0_d_1_339'
-            x='0'
-            y='0'
-            width='130'
-            height='130'
-            filterUnits='userSpaceOnUse'
-            color-interpolation-filters='sRGB'
-          >
-            <feFlood flood-opacity='0' result='BackgroundImageFix' />
-            <feColorMatrix
-              in='SourceAlpha'
-              type='matrix'
-              values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0'
-              result='hardAlpha'
-            />
-            <feOffset dy='3' />
-            <feGaussianBlur stdDeviation='1.5' />
-            <feComposite in2='hardAlpha' operator='out' />
-            <feColorMatrix
-              type='matrix'
-              values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.160784 0'
-            />
-            <feBlend
-              mode='normal'
-              in2='BackgroundImageFix'
-              result='effect1_dropShadow_1_339'
-            />
-            <feBlend
-              mode='normal'
-              in='SourceGraphic'
-              in2='effect1_dropShadow_1_339'
-              result='shape'
-            />
-          </filter>
-        </defs>
-      </svg>
+      <Link to='header' smooth={true} duration={500}>
+        <svg
+          data-aos='fade-up'
+          data-aos-duration='800'
+          width='130'
+          height='130'
+          viewBox='0 0 130 130'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+          className='absolute -top-8 right-8 h-24 w-24 cursor-pointer sm:right-16'
+        >
+          <g filter='url(#filter0_d_1_339)'>
+            <circle cx='65' cy='62' r='62' fill='white' />
+          </g>
+          <path d='M65.5 40L87.5836 73H43.4164L65.5 40Z' fill='#DBEFED' />
+          <defs>
+            <filter
+              id='filter0_d_1_339'
+              x='0'
+              y='0'
+              width='130'
+              height='130'
+              filterUnits='userSpaceOnUse'
+              color-interpolation-filters='sRGB'
+            >
+              <feFlood flood-opacity='0' result='BackgroundImageFix' />
+              <feColorMatrix
+                in='SourceAlpha'
+                type='matrix'
+                values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0'
+                result='hardAlpha'
+              />
+              <feOffset dy='3' />
+              <feGaussianBlur stdDeviation='1.5' />
+              <feComposite in2='hardAlpha' operator='out' />
+              <feColorMatrix
+                type='matrix'
+                values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.160784 0'
+              />
+              <feBlend
+                mode='normal'
+                in2='BackgroundImageFix'
+                result='effect1_dropShadow_1_339'
+              />
+              <feBlend
+                mode='normal'
+                in='SourceGraphic'
+                in2='effect1_dropShadow_1_339'
+                result='shape'
+              />
+            </filter>
+          </defs>
+        </svg>
+      </Link>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 function About() {
   return (
-    <div className='bg-LightBlueGAC px-8 py-10 lg:px-20 lg:py-24'>
+    <div className='bg-LightBlueGAC px-8 py-10 lg:px-20 lg:py-24' id='about'>
       <h1
         className='mb-8 text-xl lg:text-[60px]'
         data-aos='fade-right'
