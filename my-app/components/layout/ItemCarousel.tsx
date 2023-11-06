@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 interface ItemCarouselProps {
   title: string;
   description: string;
@@ -11,9 +9,7 @@ function ItemCarousel({ title, description }: ItemCarouselProps) {
       className='flex flex-col items-center justify-center'
       data-aos='zoom-in'
     >
-      <Image
-        width={1280}
-        height={1280}
+      <img
         src='/images/whiteIcon.png'
         alt={''}
         className='mb-6 h-[141px] w-[327px] object-scale-down'

@@ -1,5 +1,4 @@
 import { Menu, X } from 'lucide-react';
-import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-scroll';
 
@@ -36,10 +35,8 @@ export default function Header() {
       className='relative flex h-[164px] w-full items-center justify-between px-16 py-4'
       id='header'
     >
-      <Image
+      <img
         src='/images/coloredIcon.png'
-        width={1280}
-        height={1280}
         alt=''
         className='h-16 w-32 object-scale-down sm:h-[115px] sm:w-[266px]'
       />

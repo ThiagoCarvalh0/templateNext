@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 function Products() {
   return (
     <div className='flex flex-col px-12 pt-28 lg:pb-14' id='product'>
@@ -8,11 +6,9 @@ function Products() {
         data-aos='fade-up'
         data-aos-duration='800'
       >
-        <Image
+        <img
           src='/images/coloredIcon.png'
           alt={''}
-          width={1280}
-          height={1280}
           className='h-[203px] w-[471px] object-scale-down'
         />
         <div>

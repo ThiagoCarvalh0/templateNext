@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 function Form() {
   return (
     <div className='grid grid-cols-1 gap-x-8 bg-LightBlueGAC px-8 pb-10 pt-24 lg:grid-cols-2 lg:px-12 lg:pb-4'>
@@ -58,12 +56,10 @@ function Form() {
         >
           Enviar
         </button>
-        <Image
+        <img
           className='h-[141px] w-[327px] object-scale-down'
           src='/images/whiteIcon.png'
           alt={''}
-          width={1280}
-          height={1280}
         />
       </form>
       <div data-aos='fade-up'>
@@ -90,12 +86,10 @@ function Form() {
         <p className='text-md mb-14 font-light lg:text-xl'>
           www.sistemaautoridaderegistro.com.br
         </p>
-        <Image
+        <img
           className='h-[149px] w-[327px] object-scale-down'
           src='/images/btor.png'
           alt={''}
-          width={1280}
-          height={1280}
         />
       </div>
     </div>
