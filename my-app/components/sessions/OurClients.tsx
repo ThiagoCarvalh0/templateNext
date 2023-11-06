@@ -1,9 +1,32 @@
-import Image from 'next/image';
+import { Autoplay } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import 'swiper/css';
+import 'swiper/css/autoplay';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/effect-fade';
+import 'swiper/css/grid';
+import 'swiper/css/mousewheel';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import 'swiper/css/thumbs';
 
 function OurClients() {
+  const images = [
+    'online',
+    'hgl',
+    'terra',
+    'ar',
+    'online',
+    'hgl',
+    'terra',
+    'ar',
+  ];
+
   return (
     <div
-      className='mb-32 flex flex-col items-center justify-center pt-36'
+      className='mb-4 flex flex-col items-center justify-center pt-36 lg:mb-32'
       id='client'
       data-aos='fade-up'
       data-aos-duration='800'
@@ -34,46 +57,45 @@ function OurClients() {
       </svg>
 
       <h1 className='mb-5 text-4xl'>Nossos Clientes</h1>
-      <p className='mb-20 text-center font-light'>
+      <p className='mb-4 text-center font-light lg:mb-20'>
         Estas renomadas empresas confiam em nossos produtos
       </p>
 
-      {/*
-          - Falta trocar hidden -> flex, quando tiver todas as imagens para construir o carrossel.
-      */}
-      <div className='hidden items-center justify-center px-8'>
-        <Image
-          src='/images/clientes/online.png'
-          alt={''}
-          height={1280}
-          width={1280}
-          quality={100}
-          className='h-[410px] w-[300px] object-scale-down'
-        />
-        <Image
-          src='/images/clientes/hgl.png'
-          alt={''}
-          height={1280}
-          width={1280}
-          quality={100}
-          className='h-[410px] w-[300px] object-scale-down'
-        />
-        <Image
-          src='/images/clientes/terra.png'
-          alt={''}
-          height={1280}
-          width={1280}
-          quality={100}
-          className='h-[410px] w-[300px] object-scale-down'
-        />
-        <Image
-          src='/images/clientes/ar.png'
-          alt={''}
-          height={1280}
-          width={1280}
-          quality={100}
-          className='h-[410px] w-[300px] object-scale-down'
-        />
+      <div className='flex items-center justify-center'>
+        <Swiper
+          className=' w-screen max-w-xl lg:max-w-6xl'
+          modules={[Autoplay]}
+          loop={true}
+          centeredSlides={false}
+          autoplay={{
+            delay: 2000,
+            stopOnLastSlide: true,
+            disableOnInteraction: false,
+          }}
+          breakpoints={{
+            0: {
+              spaceBetween: 10,
+              slidesPerView: 2,
+            },
+
+            600: {
+              spaceBetween: 10,
+              slidesPerView: 4,
+            },
+          }}
+        >
+          {images.map((i) => {
+            return (
+              <SwiperSlide key={i}>
+                <img
+                  className='h-full w-full'
+                  src={`images/clientes/${i}.png`}
+                  alt=''
+                />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
       </div>
     </div>
   );
