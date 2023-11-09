@@ -18,9 +18,9 @@ export default function App() {
     <>
       <div className='flex w-full flex-col gap-10 py-10'>
         <span className='text-center text-3xl font-semibold'>PARCERIAS</span>
-        <div className='relative px-24'>
+        <div className='relative w-full sm:h-10 sm:px-12 lg:h-auto lg:px-24'>
           <div
-            className={`swiper-button-prev-per-view absolute left-0 top-[3.5rem]`}
+            className={`swiper-button-prev-per-view absolute left-0 sm:top-[0rem] lg:top-[3.5rem]`}
           >
             <Image
               src={'/imagens/LeftArrow.png'}
@@ -30,7 +30,7 @@ export default function App() {
             />
           </div>
           <div
-            className={`swiper-button-next-per-view absolute right-0 top-[3.5rem]`}
+            className={`swiper-button-next-per-view absolute right-0 sm:top-[0rem] lg:top-[3.5rem]`}
           >
             <Image
               src={'/imagens/RightArrow.png'}
@@ -41,7 +41,7 @@ export default function App() {
           </div>
           <Swiper
             slidesPerView={3}
-            spaceBetween={30}
+            spaceBetween={10}
             pagination={{
               clickable: true,
             }}
@@ -50,7 +50,7 @@ export default function App() {
               prevEl: '.swiper-button-prev-per-view',
             }}
             modules={[Navigation]}
-            className=''
+            className='w-full'
           >
             <SwiperSlide>
               <Image
@@ -88,7 +88,7 @@ export default function App() {
                 className='w-full sm:hidden lg:block'
               />
             </SwiperSlide>
-            <SwiperSlide>
+            <SwiperSlide className='w-full'>
               <Image
                 src={'/imagens/FeiraInternacional.png'}
                 width={600}
@@ -97,7 +97,7 @@ export default function App() {
                 className='w-full sm:hidden lg:block'
               />
             </SwiperSlide>
-            <SwiperSlide>
+            <SwiperSlide className='w-full'>
               <Image
                 src={'/imagens/FazerAcontecer.png'}
                 width={600}

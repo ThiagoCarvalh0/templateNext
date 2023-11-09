@@ -10,7 +10,7 @@ const GaleriaDeEventos = () => {
       >
         GALERIA DE EVENTOS
       </span>
-      <div className='flex gap-2 p-10'>
+      <div className='sm:flex-column gap-2 p-10 lg:flex lg:flex-row'>
         <div
           className='flex-1'
           data-aos='fade-left'
@@ -22,12 +22,12 @@ const GaleriaDeEventos = () => {
             width={1000}
             height={1000}
             alt=''
-            className='w-full sm:hidden lg:block'
+            className='w-full object-cover'
           />
         </div>
         <div className='flex flex-1 flex-col justify-between gap-3'>
           <div
-            className='flex flex-1'
+            className='flex min-h-[11rem] flex-1'
             data-aos='fade-left'
             data-aos-delay='70'
             data-aos-mirror='false'
@@ -37,7 +37,7 @@ const GaleriaDeEventos = () => {
               width={1000}
               height={1000}
               alt=''
-              className='w-2/4 sm:hidden lg:block'
+              className='w-2/4 rounded-customMd object-cover'
             />
             <div className='flex w-2/4 flex-grow flex-col p-2'>
               <span className='text-xl font-semibold'>
@@ -47,7 +47,7 @@ const GaleriaDeEventos = () => {
             </div>
           </div>
           <div
-            className='flex flex-1'
+            className='flex flex-1 rounded-customMd'
             data-aos='fade-left'
             data-aos-delay='90'
             data-aos-mirror='false'
@@ -57,7 +57,7 @@ const GaleriaDeEventos = () => {
               width={1000}
               height={1000}
               alt=''
-              className='w-2/4 sm:hidden lg:block'
+              className='w-2/4 object-cover'
             />
             <div className='flex w-2/4 flex-col p-2'>
               <span className='text-xl font-semibold'>
@@ -78,7 +78,7 @@ const GaleriaDeEventos = () => {
               width={1000}
               height={1000}
               alt=''
-              className='w-2/4 sm:hidden lg:block'
+              className='w-2/4 rounded-customMd object-cover'
             />
             <div className='flex w-2/4 flex-col p-2'>
               <span className='text-xl font-semibold'>

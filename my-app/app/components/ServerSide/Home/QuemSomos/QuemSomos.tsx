@@ -4,7 +4,7 @@ const QuemSomos = () => {
   return (
     <>
       <div className='flex w-full justify-center bg-slate-200 py-10'>
-        <div className='flex w-[73rem] max-w-[73rem] flex-col gap-10 py-10'>
+        <div className='flex w-[73rem] max-w-[73rem] flex-col gap-10 px-4 sm:py-10'>
           <span className='text-center text-3xl font-semibold'>QuemSomos</span>
           <span>
             Fundada em 30 de outubro de 1984, a FACMAT - Federação das

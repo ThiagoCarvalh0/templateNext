@@ -1,5 +1,5 @@
 'use client';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Image from 'next/image';
@@ -12,6 +12,28 @@ import 'swiper/css/pagination';
 import { Navigation } from 'swiper/modules';
 
 export default function ParceriasEConveniosSwiper() {
+  const [slidesPerView, setSlidesPerView] = useState(7);
+
+  useEffect(() => {
+    const updateSlidesPerView = () => {
+      // Atualize o número de slidesPerView com base na largura da tela
+      if (window.innerWidth < 768) {
+        setSlidesPerView(1); // Defina 1 slide por vez para telas menores que 768px (dispositivos móveis)
+      } else {
+        setSlidesPerView(7); // Caso contrário, defina 7 slides por vez
+      }
+    };
+    // Adicione um listener de redimensionamento para atualizar o número de slidesPerView
+    window.addEventListener('resize', updateSlidesPerView);
+
+    // Chame a função inicial para definir o valor inicial corretamente
+    updateSlidesPerView();
+
+    // Remova o listener de redimensionamento ao desmontar o componente
+    return () => {
+      window.removeEventListener('resize', updateSlidesPerView);
+    };
+  }, []);
   return (
     <>
       <div className='flex w-full flex-col gap-10 py-10'>
@@ -38,7 +60,7 @@ export default function ParceriasEConveniosSwiper() {
             />
           </div>
           <Swiper
-            slidesPerView={7}
+            slidesPerView={slidesPerView}
             spaceBetween={30}
             pagination={{
               clickable: true,

@@ -11,20 +11,24 @@ import React from 'react';
 const ServicosDestaque = () => {
   return (
     <div className='flex w-full flex-col gap-10 pt-10'>
-      <span data-aos='fade-down' className='text-center text-3xl font-semibold'>
+      <span
+        data-aos='fade-down'
+        className='text-center text-3xl font-semibold sm:text-2xl'
+      >
         SERVIÇOS EM DESTAQUE
       </span>
-      <div className='flex justify-between gap-1'>
+      <div className='flex justify-between gap-1 sm:flex-col md:p-4 lg:flex-row'>
         <Card
           data-aos='fade-right'
           data-aos-delay='50'
-          className='rounded-customMd shadow-xl'
+          className='w-full rounded-customMd shadow-xl'
         >
           <Image
             src={'/imagens/CrediConsult.png'}
             width={500}
             height={500}
             alt=''
+            className='w-full'
           />
           <CardHeader>
             <CardTitle>CREDICONSULT</CardTitle>
@@ -37,13 +41,14 @@ const ServicosDestaque = () => {
         <Card
           data-aos='fade-right'
           data-aos-delay='150'
-          className='rounded-customMd shadow-xl'
+          className='w-full rounded-customMd shadow-xl'
         >
           <Image
             src={'/imagens/CertificadoDigital.png'}
             width={500}
             height={500}
             alt=''
+            className='w-full'
           />
           <CardHeader>
             <CardTitle>CERTIFICAÇÃO DIGITAL</CardTitle>
@@ -56,9 +61,15 @@ const ServicosDestaque = () => {
         <Card
           data-aos='fade-right'
           data-aos-delay='250'
-          className='rounded-customMd shadow-xl'
+          className='w-full rounded-customMd shadow-xl'
         >
-          <Image src={'/imagens/Cbmae.png'} width={500} height={500} alt='' />
+          <Image
+            src={'/imagens/Cbmae.png'}
+            width={500}
+            height={500}
+            alt=''
+            className='w-full'
+          />
           <CardHeader>
             <CardTitle>CBMAE</CardTitle>
             <CardDescription>
@@ -71,13 +82,14 @@ const ServicosDestaque = () => {
           data-aos='fade-right'
           data-aos-delay='350'
           data-aos-offset='120'
-          className='rounded-customMd shadow-xl'
+          className='w-full rounded-customMd shadow-xl'
         >
           <Image
             src={'/imagens/OrientacaoJuridica.png'}
             width={500}
             height={500}
             alt=''
+            className='w-full'
           />
           <CardHeader>
             <CardTitle>ORIENTAÇÃO JURÍDICA</CardTitle>

@@ -31,7 +31,7 @@ const Newsletter = () => {
     }
   };
   return (
-    <div className='mt-6 flex justify-between rounded-xl bg-entidades_green p-4'>
+    <div className='mt-6 flex justify-between rounded-xl bg-entidades_green p-4 sm:flex-col lg:flex-row'>
       <div className='flex flex-col'>
         <span className='text-3xl font-semibold text-white'>NEWSLETTER</span>
         <span className='text-slate-300'>
@@ -41,9 +41,9 @@ const Newsletter = () => {
       <div className='flex w-full justify-center'>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className='flex w-full items-center justify-between gap-3'
+          className='flex w-full items-center justify-between gap-3 sm:flex-col lg:flex-row'
         >
-          <div className='flex-1'>
+          <div className='flex-1 sm:w-full'>
             <input
               type='text'
               {...register('nome', { required: 'Este campo é obrigatório' })}
@@ -52,7 +52,7 @@ const Newsletter = () => {
             />
             {errors.nome && <p>{errors.nome.message}</p>}
           </div>
-          <div className='flex-1'>
+          <div className='flex-1 sm:w-full'>
             <input
               type='text'
               {...register('email', { required: 'Este campo é obrigatório' })}
@@ -63,7 +63,7 @@ const Newsletter = () => {
           </div>
           <Button
             type='submit'
-            className='flex-1 rounded-customMd border-2 border-white bg-transparent py-[1.65rem] font-semibold text-white hover:border-transparent hover:bg-green-400 hover:text-white'
+            className='flex-1 rounded-customMd border-2 border-white bg-transparent py-[1.65rem] font-semibold text-white hover:border-transparent hover:bg-green-400 hover:text-white sm:w-full'
           >
             Cadastrar
           </Button>
