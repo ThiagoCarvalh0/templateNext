@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './Swiper.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
@@ -8,6 +8,8 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 import Image from 'next/image';
+import { ConteudoHomeContext } from '@/app/Contexts/HomeContexts';
+import { Root } from '@/types/types';
 
 // import { Conteudo, SessaoProps } from "@/types/Conteudo";
 
@@ -15,6 +17,8 @@ import Image from 'next/image';
 //   process.env.NEXT_PUBLIC_URL_CMS! + process.env.NEXT_PUBLIC_IMAGE_FOLDER;
 
 const SwiperBanners: React.FC<any> = (conteudo) => {
+  const { getConteudoByNomeTipoConteudo } = useContext(ConteudoHomeContext);
+  const menu: Root[] = getConteudoByNomeTipoConteudo('Menu');
   return (
     <>
       <div className='z-10 w-full'>

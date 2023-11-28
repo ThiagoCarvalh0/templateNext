@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useContext } from 'react';
 import Image from 'next/image';
 import { Button } from '../../../ClientSide/Header/HeaderClient';
 import Link from 'next/link';
@@ -23,6 +23,8 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { MenuIcon } from 'lucide-react';
+import { ConteudoHomeContext } from '@/app/Contexts/HomeContexts';
+import { Root } from '@/types/types';
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -38,9 +40,12 @@ const components: { title: string; href: string; description: string }[] = [
 ];
 
 const Header = () => {
+  const { getConteudoByNomeTipoConteudo } = useContext(ConteudoHomeContext);
+  const menu: Root[] = getConteudoByNomeTipoConteudo('Menu');
+  console.log(menu);
   return (
     <>
-      <div className='sticky top-0 z-20 flex flex-col'>
+      <div className='sticky top-0 z-20 flex w-full flex-col'>
         <div>
           <div
             id='header'
