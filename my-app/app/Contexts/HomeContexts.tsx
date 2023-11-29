@@ -21,7 +21,7 @@ const ConteudoProvider = ({ children }: ConteudoProviderProps) => {
         }
       ),
   });
-
+  console.log(data);
   function getConteudoByNomeTipoConteudo(key: string) {
     if (data) {
       const Conteudo = data?.Conteudos.filter((item) => {

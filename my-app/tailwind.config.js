@@ -21,10 +21,8 @@ module.exports = {
         'bottom': 'rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;'
       },
       colors: {
-        entidades_green: "#0F966F",
-        entidades_gray: "#5D6B5D",
-        entidades_white: "#F2FCF2",
-        entidades_dark_gray: "#3D4A3D",
+        rede_check_dark_blue: "#2F4858",
+        rede_check_light_blue: "#005F71",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
