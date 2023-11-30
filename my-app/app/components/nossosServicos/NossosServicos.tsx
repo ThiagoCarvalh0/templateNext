@@ -16,10 +16,13 @@ const nossosServicos = () => {
       <span className='w-full pb-12 text-center text-5xl'>
         {ComponentData && ComponentData[0].TituloConteudo}
       </span>
-      <div className='custom-lg:justify-between custom-md:gap-2 custom-md:flex-wrap custom-md:flex-row flex sm:flex-col'>
+      <div className='flex p-4 sm:w-full sm:flex-col sm:items-center sm:justify-center sm:gap-4 custom-md:flex-row custom-md:flex-wrap custom-md:gap-2 custom-lg:justify-between'>
         {ComponentData &&
           ComponentData[0].ConteudoDependente.map((item, index) => (
-            <div className='flex w-64 flex-col justify-between' key={index}>
+            <div
+              className='flex flex-col justify-between shadow-xl sm:w-80 lg:w-64'
+              key={index}
+            >
               <div className='flex h-40 items-center justify-center rounded-t-customLg bg-rede_check_light_blue'>
                 <div className='flex items-center justify-center gap-2'>
                   <img
@@ -36,9 +39,10 @@ const nossosServicos = () => {
               <div className='h-24 p-4'>
                 <span>{item.BreveDescricao}</span>
               </div>
-              <div className='flex gap-2 px-4'>
+              <div className='flex gap-2 px-4 pb-2'>
                 <Link
-                  href=''
+                  href='https://tagcred.com.br/'
+                  target='_blank'
                   className='flex w-full flex-row-reverse justify-between gap-2'
                 >
                   <ArrowRightSquare /> Saiba mais

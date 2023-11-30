@@ -16,6 +16,7 @@ import QuemSomos from './components/quemSomos/QuemSomos';
 import TorneseCliente from './components/torneseCliente/TorneseCliente';
 import Footer from './components/footer/Footer';
 import EntreEmContato from './components/entreEmContato/EntreEmContato';
+import NavMobile from './components/navMobile/NavMobile';
 
 export default function Home() {
   const queryClientInstance = new QueryClient();
@@ -32,13 +33,14 @@ function HomeComponent() {
       {/* header */}
       <Header />
       <SwiperBanners />
-      <div className='custom-lg:w-[70rem] custom-lg:max-w-[70rem] border sm:w-full'>
+      <div className='border sm:w-full custom-lg:w-[70rem] custom-lg:max-w-[70rem]'>
         <NossosServicos />
       </div>
       <QuemSomos />
       <TorneseCliente />
       <EntreEmContato />
       <Footer />
+      <NavMobile />
     </ConteudoProvider>
   );
 }

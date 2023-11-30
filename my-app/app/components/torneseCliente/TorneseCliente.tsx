@@ -8,7 +8,7 @@ const TorneseCliente = () => {
 
   return (
     <div className='flex items-center justify-center border sm:w-full'>
-      <div className='custom-lg:w-[70rem] custom-lg:max-w-[70rem] flex w-full items-center justify-center gap-2 py-12'>
+      <div className='flex w-full items-center justify-center gap-2 py-12 sm:flex-col sm:p-2 lg:flex-row custom-lg:w-[70rem] custom-lg:max-w-[70rem]'>
         <div>
           <img
             src={

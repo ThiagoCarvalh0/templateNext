@@ -35,9 +35,9 @@ const Footer = () => {
 
   return (
     <div className='flex items-center justify-center sm:w-full'>
-      <div className='custom-lg:w-[70rem] custom-lg:max-w-[70rem] flex w-full items-center justify-center gap-2 py-12'>
+      <div className='flex w-full items-center justify-center gap-2 py-12 custom-lg:w-[70rem] custom-lg:max-w-[70rem]'>
         <div className='flex w-full'>
-          <div className='flex w-full gap-24'>
+          <div className='flex w-full gap-24 sm:flex-col sm:p-2 lg:flex-row'>
             <div className='flex flex-col gap-2'>
               <div className='flex flex-col gap-2'>
                 <span
@@ -60,7 +60,7 @@ const Footer = () => {
                   ))}
               </div>
             </div>
-            <span className='self-end'>
+            <span className='lg:self-end'>
               {textoParceria && textoParceria[0].BreveDescricao}
             </span>
           </div>
