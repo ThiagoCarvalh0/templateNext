@@ -3,6 +3,11 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { ConteudoHomeContext } from '@/app/Contexts/HomeContexts';
 import { Root } from '@/types/types';
+import './Swipper.css';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 const src =
   process.env.NEXT_PUBLIC_URL_CMS! + process.env.NEXT_PUBLIC_IMAGE_FOLDER!;
@@ -18,10 +23,8 @@ const SwiperBanners = () => {
     return item.TituloConteudo == 'Banners Topo' ? item : null;
   });
 
-  console.log(BannersTopo[0]);
-
   return (
-    <div>
+    <div className='w-full'>
       <div className='z-10 w-full'>
         <Swiper
           spaceBetween={30}

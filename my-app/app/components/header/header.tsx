@@ -1,10 +1,11 @@
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 import React from 'react';
 
 const Header = () => {
   return (
-    <header className='bg-rede_check_dark_blue flex w-full justify-center'>
-      <div className='flex w-[72rem] max-w-[72rem] items-center justify-center py-4'>
+    <header className='flex w-full justify-center bg-rede_check_dark_blue'>
+      <div className='flex items-center py-4 lg:w-[72rem] lg:max-w-[72rem] xl:w-full xl:max-w-none xl:px-4'>
         <img src='/imagens/REDE_CHECK.png' className='h-auto w-72' />
         <ul className='m-auto flex gap-2'>
           <li>
@@ -21,7 +22,9 @@ const Header = () => {
           </li>
         </ul>
         <Button className='border-2 border-white px-2 py-8'>
-          <img src='/imagens/logo.png' alt='' className='h-auto w-full' />
+          <Link href='https://app.tagcred.com.br/' target='_blank'>
+            <img src='/imagens/logo.png' alt='' className='h-auto w-full' />
+          </Link>
         </Button>
       </div>
     </header>

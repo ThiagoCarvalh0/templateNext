@@ -22,6 +22,8 @@ const ConteudoProvider = ({ children }: ConteudoProviderProps) => {
       ),
   });
 
+  console.log(data);
+
   function getConteudoByNomeTipoConteudo(key: string) {
     if (data != undefined && data != null) {
       const Conteudo = data?.Conteudos.filter((item) => {
@@ -31,9 +33,22 @@ const ConteudoProvider = ({ children }: ConteudoProviderProps) => {
     }
   }
 
+  function getConteudoByTituloConteudo(key: string) {
+    if (data != undefined && data != null) {
+      const Conteudo = data?.Conteudos.filter((item) => {
+        return item.TituloConteudo == key ? item : null;
+      });
+      return Conteudo;
+    }
+  }
+
   return (
     <ConteudoHomeContext.Provider
-      value={{ data, getConteudoByNomeTipoConteudo }}
+      value={{
+        data,
+        getConteudoByNomeTipoConteudo,
+        getConteudoByTituloConteudo,
+      }}
     >
       {children}
     </ConteudoHomeContext.Provider>
