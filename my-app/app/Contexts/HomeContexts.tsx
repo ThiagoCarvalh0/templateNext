@@ -23,11 +23,14 @@ const ConteudoProvider = ({ children }: ConteudoProviderProps) => {
   });
 
   const createRequest = async (data: any) => {
-    const dataBody = await fetchWrapper<{}>(
-      `${process.env.NEXT_PUBLIC_CMS_EMPRESA_ID}/CMSSolicitacao/Solicitacao`,
+    await fetch(
+      `${process.env.NEXT_PUBLIC_URL_API_CMS}/CMSSolicitacao/Solicitacao`,
       {
-        body: data,
+        body: JSON.stringify(data),
         method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
       }
     );
   };
@@ -52,14 +55,13 @@ const ConteudoProvider = ({ children }: ConteudoProviderProps) => {
     }
   }
 
-  function sendRequest() {}
-
   return (
     <ConteudoHomeContext.Provider
       value={{
         data,
         getConteudoByNomeTipoConteudo,
         getConteudoByTituloConteudo,
+        createRequest,
       }}
     >
       {children}

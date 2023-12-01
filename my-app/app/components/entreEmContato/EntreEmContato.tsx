@@ -18,12 +18,13 @@ import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 
 const EntreEmContato = () => {
-  const { getConteudoByTituloConteudo } = useContext(ConteudoHomeContext);
+  const { getConteudoByTituloConteudo, createRequest } =
+    useContext(ConteudoHomeContext);
   const [checked, setChecked] = useState<boolean>(true);
   const ComponentData = getConteudoByTituloConteudo('Entre em contato');
 
   const formSchema = z.object({
-    nomecompleto: z.string().min(2, {
+    nome: z.string().min(2, {
       message: 'Nome Completo deve ter pelo menos 2 caracteres.',
     }),
     telefone: z.string().min(2, {
@@ -35,34 +36,37 @@ const EntreEmContato = () => {
     email: z.string().min(2, {
       message: 'Email deve ter pelo menos 2 caracteres.',
     }),
+    mensagem: z.string().min(2, {
+      message: 'Email deve ter pelo menos 2 caracteres.',
+    }),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      nomecompleto: '',
+      nome: '',
       telefone: '',
       cnpj: '',
       email: '',
+      mensagem: '',
     },
   });
 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    // const body = {
-    //   idSolicitacao: 0,
-    //   idEmpresa: +ID_EMPRESA!,
-    //   nome: data.nome,
-    //   telefone: data.celular.replace(/\D/g, ""),
-    //   email: data.email,
-    //   cnpj: "",
-    //   mensagem: data.area + " " + data.tipoSolicitacao + " " + data.mensagem,
-    //   controleInterno: "Solicitação via ViaOnline",
-    //   tipoSolicitacao: 0,
-    // };
-    // form.resetFields();
-    // onChange(false);
+    const body = {
+      idSolicitacao: 0,
+      idEmpresa: +process.env.NEXT_PUBLIC_CMS_EMPRESA_ID!,
+      nome: values.nome,
+      telefone: values.telefone.replace(/\D/g, ''),
+      email: values.email,
+      cnpj: '',
+      mensagem: values.mensagem,
+      controleInterno: 'Solicitação Rede Check',
+      tipoSolicitacao: 0,
+    };
+    createRequest(body);
+    form.reset();
   }
 
   return (
@@ -83,7 +87,7 @@ const EntreEmContato = () => {
                     {' '}
                     <FormField
                       control={form.control}
-                      name='nomecompleto'
+                      name='nome'
                       render={({ field }) => (
                         <FormItem className='w-full'>
                           {/* <FormLabel>Username</FormLabel> */}
@@ -168,9 +172,22 @@ const EntreEmContato = () => {
                     />
                   </div>
                 </div>
-                <Textarea
-                  placeholder='Comentário'
-                  className='rounded-customMd border-none bg-white placeholder-slate-500 shadow-bottom outline-none'
+                <FormField
+                  control={form.control}
+                  name='mensagem'
+                  render={({ field }) => (
+                    <FormItem className='w-full'>
+                      {/* <FormLabel>Username</FormLabel> */}
+                      <FormControl>
+                        <Textarea
+                          placeholder='Comentário'
+                          className='rounded-customMd border-none bg-white placeholder-slate-500 shadow-bottom outline-none'
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage className='text-white' />
+                    </FormItem>
+                  )}
                 />
                 <div className='flex flex-col gap-2'>
                   <span className='text-white'>

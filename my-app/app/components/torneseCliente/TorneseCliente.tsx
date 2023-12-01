@@ -7,8 +7,8 @@ const TorneseCliente = () => {
   const ComponentData = getConteudoByTituloConteudo('Torne-se Cliente');
 
   return (
-    <div className='flex items-center justify-center sm:w-full'>
-      <div className='flex w-full items-center justify-center gap-2 py-12 sm:flex-col sm:p-2 lg:flex-row custom-lg:w-[70rem] custom-lg:max-w-[70rem]'>
+    <div className='flex items-center justify-center py-12 sm:w-full'>
+      <div className='flex w-full items-center justify-center gap-2 sm:flex-col sm:p-2 lg:flex-row custom-lg:w-[70rem] custom-lg:max-w-[70rem]'>
         <div>
           <img
             src={
