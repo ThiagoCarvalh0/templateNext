@@ -19,13 +19,20 @@ const SwiperBanners = () => {
     ? getConteudoByNomeTipoConteudo('carrosel')
     : [];
 
+  const SwipperDataMobile: Root[] = data
+    ? getConteudoByNomeTipoConteudo('Carrosel Mobile')
+    : [];
+
   const BannersTopo = SwipperData?.filter((item: Root) => {
+    return item.TituloConteudo == 'Banners Topo' ? item : null;
+  });
+  const BannersTopoMobile = SwipperDataMobile?.filter((item: Root) => {
     return item.TituloConteudo == 'Banners Topo' ? item : null;
   });
 
   return (
     <div className='w-full'>
-      <div className='z-10 w-full'>
+      <div className='z-10 w-full sm:hidden lg:block'>
         <Swiper
           spaceBetween={30}
           centeredSlides={true}
@@ -54,7 +61,7 @@ const SwiperBanners = () => {
             ))}
         </Swiper>
       </div>
-      {/* <div className='sm:block lg:hidden'>
+      <div className='sm:block lg:hidden'>
         <Swiper
           spaceBetween={30}
           centeredSlides={true}
@@ -68,8 +75,21 @@ const SwiperBanners = () => {
           navigation={true}
           modules={[Autoplay, Pagination, Navigation]}
           className='mySwiper'
-        ></Swiper>
-      </div> */}
+        >
+          {BannersTopoMobile[0] &&
+            BannersTopoMobile[0].Arquivos.map((item, index) => (
+              <SwiperSlide key={index}>
+                <img
+                  src={src + item.NomeArquivo}
+                  width={500}
+                  height={500}
+                  alt=''
+                  className='w-full sm:hidden lg:block'
+                />
+              </SwiperSlide>
+            ))}
+        </Swiper>
+      </div>
     </div>
   );
 };

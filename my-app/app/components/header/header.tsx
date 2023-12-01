@@ -6,19 +6,40 @@ const Header = () => {
   return (
     <header className='flex w-full justify-center bg-rede_check_dark_blue'>
       <div className='flex items-center px-2 py-4 sm:w-full sm:justify-between sm:gap-2 lg:w-[72rem] lg:max-w-[72rem] xl:w-full xl:max-w-none xl:px-4'>
-        <img src='/imagens/REDE_CHECK.png' className='h-auto sm:w-40 lg:w-72' />
+        <Link href='#'>
+          <img
+            src='/imagens/REDE_CHECK.png'
+            className='h-auto sm:w-40 lg:w-72'
+          />
+        </Link>
         <ul className='m-auto flex gap-2 sm:hidden lg:flex'>
           <li>
-            <span className='text-xl text-white'>Home</span>
+            <Link href='#'>
+              <span className='text-xl text-white hover:text-blue-300'>
+                Home
+              </span>
+            </Link>
           </li>
           <li>
-            <span className='text-xl text-white'>Quem Somos</span>
+            <Link href='#quemsomos'>
+              <span className='text-xl text-white hover:text-blue-300'>
+                Quem Somos
+              </span>
+            </Link>
           </li>
           <li>
-            <span className='text-xl text-white'>Serviços</span>
+            <Link href='#nossosservicos'>
+              <span className='text-xl text-white hover:text-blue-300'>
+                Serviços
+              </span>
+            </Link>
           </li>
           <li>
-            <span className='text-xl text-white'>Contato</span>
+            <Link href='#contato'>
+              <span className='text-xl text-white hover:text-blue-300'>
+                Contato
+              </span>
+            </Link>
           </li>
         </ul>
         <Button className='border-2 border-white px-2 py-8'>

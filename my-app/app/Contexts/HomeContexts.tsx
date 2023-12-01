@@ -22,6 +22,16 @@ const ConteudoProvider = ({ children }: ConteudoProviderProps) => {
       ),
   });
 
+  const createRequest = async (data: any) => {
+    const dataBody = await fetchWrapper<{}>(
+      `${process.env.NEXT_PUBLIC_CMS_EMPRESA_ID}/CMSSolicitacao/Solicitacao`,
+      {
+        body: data,
+        method: 'POST',
+      }
+    );
+  };
+
   console.log(data);
 
   function getConteudoByNomeTipoConteudo(key: string) {
@@ -41,6 +51,8 @@ const ConteudoProvider = ({ children }: ConteudoProviderProps) => {
       return Conteudo;
     }
   }
+
+  function sendRequest() {}
 
   return (
     <ConteudoHomeContext.Provider

@@ -50,10 +50,26 @@ const EntreEmContato = () => {
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
+    // const body = {
+    //   idSolicitacao: 0,
+    //   idEmpresa: +ID_EMPRESA!,
+    //   nome: data.nome,
+    //   telefone: data.celular.replace(/\D/g, ""),
+    //   email: data.email,
+    //   cnpj: "",
+    //   mensagem: data.area + " " + data.tipoSolicitacao + " " + data.mensagem,
+    //   controleInterno: "Solicitação via ViaOnline",
+    //   tipoSolicitacao: 0,
+    // };
+    // form.resetFields();
+    // onChange(false);
   }
 
   return (
-    <div className='flex items-center justify-center border bg-rede_check_light_blue sm:w-full'>
+    <div
+      className='flex items-center justify-center bg-rede_check_light_blue sm:w-full'
+      id='contato'
+    >
       <div className='flex w-full flex-col items-center justify-center py-12 custom-lg:w-[70rem] custom-lg:max-w-[70rem]'>
         <div className='flex w-full gap-8 pb-12 sm:flex-col sm:items-center sm:justify-center lg:flex-row lg:items-baseline'>
           <div className='sm:w-full sm:px-2 lg:w-1/2'>

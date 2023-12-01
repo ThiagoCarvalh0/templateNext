@@ -35,15 +35,16 @@ const Footer = () => {
 
   return (
     <div className='flex items-center justify-center sm:w-full'>
-      <div className='flex w-full items-center justify-center gap-2 py-12 custom-lg:w-[70rem] custom-lg:max-w-[70rem]'>
+      <div className='sm:6 flex w-full items-center justify-center gap-2 lg:py-12 custom-lg:w-[70rem] custom-lg:max-w-[70rem]'>
         <div className='flex w-full'>
-          <div className='flex w-full gap-24 sm:flex-col sm:p-2 lg:flex-row'>
+          <div className='flex w-full sm:flex-col sm:gap-6 sm:p-2 lg:flex-row lg:gap-24'>
             <div className='flex flex-col gap-2'>
               <div className='flex flex-col gap-2'>
                 <span
                   dangerouslySetInnerHTML={{
                     __html: cnpj && cnpj[0].BreveDescricao,
                   }}
+                  className='w'
                 />
                 <span
                   dangerouslySetInnerHTML={{
