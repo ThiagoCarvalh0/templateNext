@@ -4,7 +4,7 @@ import React from 'react';
 
 const Header = () => {
   return (
-    <header className='flex w-full justify-center bg-rede_check_dark_blue'>
+    <header className='bg-rede_check_dark_blue flex w-full justify-center'>
       <div className='flex items-center px-2 py-4 sm:w-full sm:justify-between sm:gap-2 lg:w-[72rem] lg:max-w-[72rem] xl:w-full xl:max-w-none xl:px-4'>
         <Link href='#'>
           <img
@@ -12,7 +12,7 @@ const Header = () => {
             className='h-auto sm:w-40 lg:w-72'
           />
         </Link>
-        <ul className='m-auto flex gap-2 sm:hidden lg:flex'>
+        <ul className='m-auto flex gap-8 sm:hidden lg:flex'>
           <li>
             <Link href='#'>
               <span className='text-xl text-white hover:text-blue-300'>
@@ -43,7 +43,10 @@ const Header = () => {
           </li>
         </ul>
         <Button className='border-2 border-white px-2 py-8'>
-          <Link href='https://app.tagcred.com.br/' target='_blank'>
+          <Link
+            href='https://app.tagcred.com.br/Login_06.aspx?p=3159'
+            target='_blank'
+          >
             <img
               src='/imagens/logo.png'
               alt=''
