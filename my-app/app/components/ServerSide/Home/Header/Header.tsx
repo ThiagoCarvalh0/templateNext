@@ -25,6 +25,14 @@ import {
 import { MenuIcon } from 'lucide-react';
 import { ConteudoHomeContext } from '@/app/Contexts/HomeContexts';
 import { Root } from '@/types/types';
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarShortcut,
+  MenubarTrigger,
+} from '@/components/ui/menubar';
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -52,7 +60,7 @@ const Header = () => {
             className='flex w-full justify-center bg-entidades_green'
           >
             <div className='flex w-[98vw] max-w-[98vw] items-center justify-between'>
-              <div className='flex'>
+              <div className='flex items-center justify-center'>
                 <Link href='/'>
                   <Image
                     src='/imagens/facmat-logo.png'
@@ -62,90 +70,22 @@ const Header = () => {
                     className='pb-4'
                   />
                 </Link>
-                <NavigationMenu className='sm:hidden lg:inline-flex'>
-                  <NavigationMenuList>
-                    <NavigationMenuItem>
-                      <NavigationMenuTrigger className='text-base text-white'>
-                        FACMAT
-                      </NavigationMenuTrigger>
-                      <NavigationMenuContent>
-                        <ul className='grid w-[400px] gap-3 rounded-customMd bg-white p-4 shadow md:w-[500px] md:grid-cols-1 lg:w-[220px]'>
-                          <ListItem href='/docs' title='SOBRE NÓS'>
-                            Venha conhecer mais!
-                          </ListItem>
-                          <ListItem href='/docs' title='DIRETORIA' />
-                          <ListItem href='/docs' title='ASSOCIATIVISMO' />
-                        </ul>
-                      </NavigationMenuContent>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                      <Link href='/docs' legacyBehavior passHref>
-                        <NavigationMenuLink
-                          className={navigationMenuTriggerStyle()}
-                        >
-                          CERTIFICADOS
-                        </NavigationMenuLink>
-                      </Link>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                      <NavigationMenuTrigger className='text-base text-white'>
-                        IMPRENSA
-                      </NavigationMenuTrigger>
-                      <NavigationMenuContent className='relative'>
-                        <ul className='fixed left-[35rem] grid w-[400px] gap-3 rounded-customMd bg-white p-4 shadow-b md:w-[500px] md:grid-cols-1 lg:w-[220px]'>
-                          <ListItem href='/Noticias' title='NOTÍCIAS'>
-                            Verifique nossas notícias!
-                          </ListItem>
-                          <ListItem
-                            href='/GaleriaDeImagens'
-                            title='GALERIA DE EVENTOS'
-                          >
-                            Verifique nossa galeria de imagens!
-                          </ListItem>
-                          <ListItem
-                            href='/AgendaDeEventos'
-                            title='AGENDA DE EVENTOS'
-                          >
-                            Verifique nossa agenda de eventos!
-                          </ListItem>
-                        </ul>
-                      </NavigationMenuContent>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                      <NavigationMenuTrigger className='text-base text-white'>
-                        AR FACMAT
-                      </NavigationMenuTrigger>
-                      <NavigationMenuContent className='relative'>
-                        <ul className='fixed left-[44rem] grid w-[400px] gap-3 rounded-customMd bg-white p-4 shadow-b md:w-[500px] md:grid-cols-1 lg:w-[220px]'>
-                          {components.map((component) => (
-                            <ListItem
-                              key={component.title}
-                              title={component.title}
-                              href={component.href}
-                            >
-                              {component.description}
-                            </ListItem>
-                          ))}
-                        </ul>
-                      </NavigationMenuContent>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                      <NavigationMenuTrigger className='text-base text-white'>
-                        FALE CONOSCO
-                      </NavigationMenuTrigger>
-                      <NavigationMenuContent className='relative'>
-                        <ul className='fixed left-[53rem] grid w-[400px] gap-3 rounded-customMd bg-white p-4 shadow-b md:w-[500px] md:grid-cols-1 lg:w-[220px]'>
-                          <ListItem href='/FaleConosco' title='ASSOCIE-SE'>
-                            Seja nosso parceiro!
-                          </ListItem>
-                          <ListItem href='/Ouvidoria' title='OUVIDORIA'>
-                            Entre em contato conosco!
-                          </ListItem>
-                        </ul>
-                      </NavigationMenuContent>
-                    </NavigationMenuItem>
-                  </NavigationMenuList>
-                </NavigationMenu>
+                {menu &&
+                  menu.map((item) => (
+                    <Menubar>
+                      <MenubarMenu>
+                        <MenubarTrigger>{item.TituloConteudo}</MenubarTrigger>
+                        <MenubarContent>
+                          <MenubarItem>
+                            {item.ConteudoDependente.map(
+                              (item) => item.TituloConteudo
+                            )}
+                            <MenubarShortcut>⌘T</MenubarShortcut>
+                          </MenubarItem>
+                        </MenubarContent>
+                      </MenubarMenu>
+                    </Menubar>
+                  ))}
               </div>
               <div className='flex items-center lg:mb-4 lg:mr-4'>
                 <div className='flex flex-col sm:mb-2 sm:h-12'>
@@ -187,30 +127,30 @@ const Header = () => {
     </>
   );
 };
-const ListItem = React.forwardRef<
-  React.ElementRef<'a'>,
-  React.ComponentPropsWithoutRef<'a'>
->(({ className, title, children, ...props }, ref) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={cn(
-            'block select-none space-y-1 rounded-customMd p-3 leading-none text-black no-underline outline-none hover:bg-green-200 focus:bg-accent',
-            className
-          )}
-          {...props}
-        >
-          <div className='text-sm font-medium leading-none'>{title}</div>
-          <p className='line-clamp-2 text-sm leading-snug text-gray-500'>
-            {children}
-          </p>
-        </a>
-      </NavigationMenuLink>
-    </li>
-  );
-});
-ListItem.displayName = 'ListItem';
+// const ListItem = React.forwardRef<
+//   React.ElementRef<'a'>,
+//   React.ComponentPropsWithoutRef<'a'>
+// >(({ className, title, children, ...props }, ref) => {
+//   return (
+//     <li>
+//       <NavigationMenuLink asChild>
+//         <a
+//           ref={ref}
+//           className={cn(
+//             'block select-none space-y-1 rounded-customMd p-3 leading-none text-black no-underline outline-none hover:bg-green-200 focus:bg-accent',
+//             className
+//           )}
+//           {...props}
+//         >
+//           <div className='text-sm font-medium leading-none'>{title}</div>
+//           <p className='line-clamp-2 text-sm leading-snug text-gray-500'>
+//             {children}
+//           </p>
+//         </a>
+//       </NavigationMenuLink>
+//     </li>
+//   );
+// });
+// ListItem.displayName = 'ListItem';
 
 export default Header;
