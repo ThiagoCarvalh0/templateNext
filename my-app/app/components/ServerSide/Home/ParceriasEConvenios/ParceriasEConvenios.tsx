@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Image from 'next/image';
@@ -10,9 +10,19 @@ import 'swiper/css/pagination';
 
 // import required modules
 import { Navigation } from 'swiper/modules';
+import { ConteudoHomeContext } from '@/app/Contexts/HomeContexts';
+import { Root } from '@/types/types';
+import { Skeleton } from '@/components/ui/skeleton';
+
+const src =
+  process.env.NEXT_PUBLIC_URL_CMS! + process.env.NEXT_PUBLIC_IMAGE_FOLDER;
 
 export default function ParceriasEConveniosSwiper() {
   const [slidesPerView, setSlidesPerView] = useState(7);
+  const { getConteudoByNomeTituloConteudo } = useContext(ConteudoHomeContext);
+  const ParceriasEConvenios: Root[] = getConteudoByNomeTituloConteudo(
+    'PARCERIAS E CONVÊNIOS'
+  );
 
   useEffect(() => {
     const updateSlidesPerView = () => {
@@ -34,7 +44,8 @@ export default function ParceriasEConveniosSwiper() {
       window.removeEventListener('resize', updateSlidesPerView);
     };
   }, []);
-  return (
+
+  return ParceriasEConvenios ? (
     <>
       <div className='flex w-full flex-col gap-10 py-10'>
         <span className='text-center text-3xl font-semibold'>
@@ -72,81 +83,25 @@ export default function ParceriasEConveniosSwiper() {
             modules={[Navigation]}
             className=''
           >
-            <SwiperSlide>
-              <Image
-                src={'/imagens/P1.png'}
-                width={1000}
-                height={1000}
-                alt=''
-                className='w-full sm:hidden lg:block'
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Image
-                src={'/imagens/P2.png'}
-                width={1000}
-                height={1000}
-                alt=''
-                className='w-full sm:hidden lg:block'
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Image
-                src={'/imagens/P3.png'}
-                width={1000}
-                height={1000}
-                alt=''
-                className='w-full sm:hidden lg:block'
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Image
-                src={'/imagens/P4.png'}
-                width={1000}
-                height={1000}
-                alt=''
-                className='w-full sm:hidden lg:block'
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Image
-                src={'/imagens/P5.png'}
-                width={1000}
-                height={1000}
-                alt=''
-                className='w-full sm:hidden lg:block'
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Image
-                src={'/imagens/P6.png'}
-                width={1000}
-                height={1000}
-                alt=''
-                className='w-full sm:hidden lg:block'
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Image
-                src={'/imagens/P7.png'}
-                width={1000}
-                height={1000}
-                alt=''
-                className='w-full sm:hidden lg:block'
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Image
-                src={'/imagens/P7.png'}
-                width={1000}
-                height={1000}
-                alt=''
-                className='w-full sm:hidden lg:block'
-              />
-            </SwiperSlide>
+            {ParceriasEConvenios &&
+              ParceriasEConvenios[0].Arquivos.map((item, index) => (
+                <SwiperSlide key={index}>
+                  <Image
+                    src={src + item.NomeArquivo}
+                    width={1000}
+                    height={1000}
+                    alt=''
+                    className='w-full sm:hidden lg:block'
+                  />
+                </SwiperSlide>
+              ))}
           </Swiper>
         </div>
       </div>
     </>
+  ) : (
+    <div className='w-full py-2'>
+      <Skeleton className='h-[15rem] w-full rounded-customLg bg-slate-400' />
+    </div>
   );
 }

@@ -1,5 +1,5 @@
 'use client';
-import React, { useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Image from 'next/image';
@@ -12,12 +12,23 @@ import './SwiperPerView.css';
 
 // import required modules
 import { Navigation } from 'swiper/modules';
+import { ConteudoHomeContext } from '@/app/Contexts/HomeContexts';
+import { Root } from '@/types/types';
+import { Skeleton } from '@/components/ui/skeleton';
+
+const src =
+  process.env.NEXT_PUBLIC_URL_CMS! + process.env.NEXT_PUBLIC_IMAGE_FOLDER;
 
 export default function App() {
-  return (
+  const { getConteudoByNomeTituloConteudo } = useContext(ConteudoHomeContext);
+  const Parcerias: Root[] = getConteudoByNomeTituloConteudo('PARCERIAS');
+
+  return Parcerias ? (
     <>
       <div className='flex w-full flex-col gap-10 py-10'>
-        <span className='text-center text-3xl font-semibold'>PARCERIAS</span>
+        <span className='text-center text-3xl font-semibold'>
+          {Parcerias && Parcerias[0].TituloConteudo}
+        </span>
         <div className='relative w-full sm:h-10 sm:px-12 lg:h-auto lg:px-24'>
           <div
             className={`swiper-button-prev-per-view absolute left-0 sm:top-[0rem] lg:top-[3.5rem]`}
@@ -52,63 +63,25 @@ export default function App() {
             modules={[Navigation]}
             className='w-full'
           >
-            <SwiperSlide>
-              <Image
-                src={'/imagens/CursosGraduacao.png'}
-                width={600}
-                height={600}
-                alt=''
-                className='w-full sm:hidden lg:block'
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Image
-                src={'/imagens/FeiraInternacional.png'}
-                width={600}
-                height={600}
-                alt=''
-                className='w-full sm:hidden lg:block'
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Image
-                src={'/imagens/FazerAcontecer.png'}
-                width={600}
-                height={600}
-                alt=''
-                className='w-full sm:hidden lg:block'
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Image
-                src={'/imagens/CursosGraduacao.png'}
-                width={600}
-                height={600}
-                alt=''
-                className='w-full sm:hidden lg:block'
-              />
-            </SwiperSlide>
-            <SwiperSlide className='w-full'>
-              <Image
-                src={'/imagens/FeiraInternacional.png'}
-                width={600}
-                height={600}
-                alt=''
-                className='w-full sm:hidden lg:block'
-              />
-            </SwiperSlide>
-            <SwiperSlide className='w-full'>
-              <Image
-                src={'/imagens/FazerAcontecer.png'}
-                width={600}
-                height={600}
-                alt=''
-                className='w-full sm:hidden lg:block'
-              />
-            </SwiperSlide>
+            {Parcerias &&
+              Parcerias[0].Arquivos.map((item, index) => (
+                <SwiperSlide key={index}>
+                  <Image
+                    src={src + item.NomeArquivo}
+                    width={600}
+                    height={600}
+                    alt=''
+                    className='w-full sm:hidden lg:block'
+                  />
+                </SwiperSlide>
+              ))}
           </Swiper>
         </div>
       </div>
     </>
+  ) : (
+    <div className='py-2'>
+      <Skeleton className='h-[30rem] w-full rounded-customLg bg-slate-400' />
+    </div>
   );
 }

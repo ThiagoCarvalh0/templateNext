@@ -1,11 +1,22 @@
+'use client';
 import {
   Card,
+  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { Root } from '@/types/types';
+import { fetchWrapper } from '@/services/fetchService';
+import {
+  ArrowBigLeft,
+  ArrowBigRight,
+  ArrowLeft,
+  ArrowRight,
+} from 'lucide-react';
+import Link from 'next/link';
 
 type noticia = {
   id: number;
@@ -14,91 +25,102 @@ type noticia = {
   descricao: string;
 };
 
-// Exemplo de uso do tipo User
-const noticia: noticia[] = [
-  {
-    id: 1,
-    src: '/imagens/CrediConsult.png',
-    titulo: 'Evento 1',
-    descricao: 'alice@example.com',
-  },
-  {
-    id: 2,
-    src: '/imagens/Cbmae.png',
-    titulo: 'Evento 2',
-    descricao: 'alice@example.com',
-  },
-  {
-    id: 3,
-    src: '/imagens/CertificadoDigital.png',
-    titulo: 'Evento 3',
-    descricao: 'alice@example.com',
-  },
-  {
-    id: 4,
-    src: '/imagens/EventoDois.png',
-    titulo: 'Evento 4',
-    descricao: 'alice@example.com',
-  },
-  {
-    id: 5,
-    src: '/imagens/EventoTres.png',
-    titulo: 'Evento 5',
-    descricao: 'alice@example.com',
-  },
-  {
-    id: 6,
-    src: '/imagens/Cbmae.png',
-    titulo: 'Evento 6',
-    descricao: 'alice@example.com',
-  },
-  {
-    id: 7,
-    src: '/imagens/CertificadoDigital.png',
-    titulo: 'Evento 7',
-    descricao: 'alice@example.com',
-  },
-  {
-    id: 8,
-    src: '/imagens/EventoDois.png',
-    titulo: 'Evento 8',
-    descricao: 'alice@example.com',
-  },
-  {
-    id: 9,
-    src: '/imagens/EventoTres.png',
-    titulo: 'Evento 9',
-    descricao: 'alice@example.com',
-  },
-];
+const src =
+  process.env.NEXT_PUBLIC_URL_CMS! + process.env.NEXT_PUBLIC_IMAGE_FOLDER;
 
 const page = () => {
+  const [noticiasData, setNoticiasData] = useState<any>([]);
+  const [currentPage, setCurrentPage] = useState<any>(1);
+  const [pageSize, setPageSize] = useState<any>(9);
+  const [total, setTotalItens] = useState<any>(1);
+
+  useEffect(() => {
+    fetchWrapper<any>(
+      `CMSConteudo/GetConteudoByTipoConteudo/${process.env.NEXT_PUBLIC_CMS_EMPRESA_ID}/2140?pageSize=${pageSize}&pageNumber=${currentPage}`,
+      {
+        method: 'GET',
+      }
+    )
+      .then((res) => {
+        return res;
+      })
+      .then((Data) => {
+        setNoticiasData(Data);
+        console.log(Data);
+        if (Data.length > 0) {
+          console.log(Data[0].TotalCount);
+          setTotalItens(Data[0].TotalCount);
+        }
+      });
+  }, [currentPage]);
+
+  const pages = Math.ceil(total / pageSize);
+
   return (
     <div className='flex min-h-[90vh] flex-col items-center py-4'>
-      <div className='grid grid-cols-3 gap-4'>
-        {noticia.map((noticia: noticia | any, index) => (
-          <Card
-            key={index}
-            data-aos='fade-right'
-            data-aos-delay='50'
-            className='w-full rounded-customMd shadow-xl'
-          >
-            <Image
-              src={noticia.src}
-              width={500}
-              height={500}
-              alt=''
-              className='w-full'
-            />
-            <CardHeader>
-              <CardTitle>{noticia.titulo}</CardTitle>
-              <CardDescription>{noticia.descricao}</CardDescription>
-            </CardHeader>
-          </Card>
-        ))}
+      <div className='grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+        {noticiasData.map((noticia: Root, index: number) =>
+          noticia.Arquivos.length > 0 ? (
+            <Link key={index} href={`Noticias/${noticia.IdConteudo}`}>
+              <div className='sm:w-full sm:p-2 lg:w-[20rem]'>
+                <img
+                  src={src + noticia.Arquivos[0]!.NomeArquivo}
+                  width={500}
+                  height={500}
+                  alt=''
+                  className='w-full object-cover sm:w-full lg:h-[14rem]'
+                />
+                <div className='flex w-full flex-col p-2'>
+                  <span className='line-clamp-3 text-base text-zinc-900'>
+                    {noticia.TituloConteudo}
+                  </span>
+                  <span className='text-xs text-zinc-500'>
+                    {new Date(noticia.DataPublicacao).toLocaleDateString()}
+                  </span>
+                  <span className='line-clamp-3 text-base text-zinc-600'>
+                    {noticia.BreveDescricao}
+                  </span>
+                </div>
+              </div>
+            </Link>
+          ) : (
+            <></>
+          )
+        )}
       </div>
-      <div className='flex w-full justify-end px-6 py-4'>
-        <span className='flex'>Pág 1 de 20</span>
+      <div className='flex w-full justify-end gap-2 px-6 py-4'>
+        {currentPage > 1 ? (
+          <div>
+            <button
+              onClick={() => {
+                setCurrentPage(currentPage - 1);
+              }}
+            >
+              <ArrowLeft />
+            </button>
+          </div>
+        ) : (
+          <></>
+        )}
+        <span>
+          Página {currentPage} de {pages}
+        </span>
+        {currentPage == pages ? (
+          <></>
+        ) : (
+          <button
+            onClick={() => {
+              setCurrentPage(currentPage + 1);
+            }}
+          >
+            <ArrowRight />
+          </button>
+        )}
+        {/* <div className='flex w-20 gap-4 overflow-hidden'>
+          {Array.from({ length: pages }, (_, index) => (
+            <button className='flex'>{index + 1}</button>
+          ))}
+        </div> */}
       </div>
     </div>
   );

@@ -3,19 +3,23 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Button } from '@/components/ui/button';
+import { fetchWrapper } from '@/services/fetchService';
+import { toast } from '@/components/ui/use-toast';
+import { Skeleton } from '@/components/ui/skeleton';
 
 // Esquema de validação usando Zod
 const schema = z.object({
-  nome: z.string().min(1, 'O nome é obrigatório'),
+  nomeInternauta: z.string().min(1, 'O nome é obrigatório'),
   email: z.string().email('Digite um endereço de e-mail válido'),
 });
 
 type FormValues = {
-  nome: string;
+  nomeInternauta: string;
   email: string;
 };
 
 const Newsletter = () => {
+  const [visible, setVisible] = React.useState(false);
   const {
     register,
     handleSubmit,
@@ -25,12 +29,37 @@ const Newsletter = () => {
   const onSubmit = (data: FormValues) => {
     try {
       schema.parse(data);
-      console.log('Dados válidos:', data);
+      const Body = {
+        email: data.email,
+        idEmpresa: process.env.NEXT_PUBLIC_CMS_EMPRESA_ID,
+        isLiberado: true,
+        nomeInternauta: data.nomeInternauta,
+        chaveEmail: '',
+        tipoLiberacao: 'Liberado pelo portal',
+        tipoBloqueio: '',
+        dataLiberacao: new Date(),
+      };
+      fetchWrapper<{}>(`CMSConteudo/SaveEmailNewsletter`, {
+        method: 'POST',
+        body: JSON.stringify(Body),
+      }).then((res: any) =>
+        toast({
+          title: res.message,
+          variant: 'default',
+          className: res.sucesso
+            ? 'bg-green-500 text-slate-50'
+            : 'bg-red-400 text-slate-50',
+        })
+      );
     } catch (error) {
       console.error('Erro de validação:', error);
     }
   };
-  return (
+  setTimeout(() => {
+    return setVisible(true);
+  }, 1000);
+
+  return visible ? (
     <div className='mt-6 flex justify-between rounded-xl bg-entidades_green p-4 sm:flex-col lg:flex-row'>
       <div className='flex flex-col'>
         <span className='text-3xl font-semibold text-white'>NEWSLETTER</span>
@@ -46,11 +75,13 @@ const Newsletter = () => {
           <div className='flex-1 sm:w-full'>
             <input
               type='text'
-              {...register('nome', { required: 'Este campo é obrigatório' })}
+              {...register('nomeInternauta', {
+                required: 'Este campo é obrigatório',
+              })}
               placeholder='Insira seu NOME'
               className='w-full rounded-customMd px-2 py-4'
             />
-            {errors.nome && <p>{errors.nome.message}</p>}
+            {errors && <p>{errors.nomeInternauta?.message}</p>}
           </div>
           <div className='flex-1 sm:w-full'>
             <input
@@ -69,6 +100,10 @@ const Newsletter = () => {
           </Button>
         </form>
       </div>
+    </div>
+  ) : (
+    <div className='py-2'>
+      <Skeleton className='h-[15rem] w-full rounded-customLg bg-slate-400' />
     </div>
   );
 };
