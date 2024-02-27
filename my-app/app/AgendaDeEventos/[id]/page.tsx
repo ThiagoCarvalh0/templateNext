@@ -42,10 +42,10 @@ const page = ({ params }: { params: { id: string } }) => {
     )
       .then((res) => {
         setComponentData(res);
-        console.log(res);
+        res;
       })
       .catch((err) => {
-        console.log(err);
+        err;
       });
   }, []);
 

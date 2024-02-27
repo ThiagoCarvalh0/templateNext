@@ -26,11 +26,9 @@ function replaceHtmlWithTailwind(htmlString: string) {
 }
 
 // Exemplo de uso
-const htmlString =
-  '<p>Isso é um parágrafo.</p><h2>Título H2</h2><span>Texto sem tag.</span>';
-const tailwindString = replaceHtmlWithTailwind(htmlString);
-
-console.log(tailwindString);
+// const htmlString =
+//   '<p>Isso é um parágrafo.</p><h2>Título H2</h2><span>Texto sem tag.</span>';
+// const tailwindString = replaceHtmlWithTailwind(htmlString);
 
 const sanitizeAndRemoveAttributes = (html: string) => {
   const sanitizedHtml = DOMPurify.sanitize(html, {

@@ -36,9 +36,7 @@ const page = ({ params }: { params: { id: string } }) => {
       .then((res) => {
         setComponentData(res);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   }, []);
 
   return (

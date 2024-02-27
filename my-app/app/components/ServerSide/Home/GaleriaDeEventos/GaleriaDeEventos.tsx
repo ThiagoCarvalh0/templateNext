@@ -13,9 +13,7 @@ const GaleriaDeEventos = () => {
   useEffect(() => {
     loadGaleriaData(1, 4);
   }, []);
-  const galeriaPrincipal = galeriaData
-    ? galeriaData[galeriaData.length - 1]
-    : null;
+
   return galeriaData ? (
     <div className='flex w-[73rem] max-w-[73rem] flex-col'>
       <span
@@ -31,57 +29,30 @@ const GaleriaDeEventos = () => {
           data-aos-delay='50'
           data-aos-mirror='false'
         >
-          {galeriaPrincipal && (
-            <Link href={`GaleriaDeImagens/${galeriaPrincipal.IdGaleria}`}>
-              <img
-                src={
-                  src +
-                  process.env.NEXT_PUBLIC_GALERIA_FOLDER +
-                  galeriaPrincipal.IdGaleria +
-                  '/IMG/' +
-                  galeriaPrincipal.Arquivos![0].NomeArquivo
-                }
-                width={500}
-                height={500}
-                alt=''
-                className='w-full object-cover'
-              />
-            </Link>
-          )}
-        </div>
-        <div className='flex flex-1 flex-col justify-between gap-3'>
-          {galeriaData[0] ? (
-            <Link href={`GaleriaDeImagens/${galeriaData[1].IdGaleria}`}>
-              <div
-                className='flex min-h-[11rem] flex-1'
-                data-aos='fade-left'
-                data-aos-delay='70'
-                data-aos-mirror='false'
-              >
+          {galeriaData[0] && (
+            <Link href={`GaleriaDeImagens/${galeriaData[0].IdGaleria}`}>
+              {galeriaData[0].Arquivos.filter(
+                (item: any) => item.IsDestaque
+              ).map((item: any, index: number) => (
                 <img
+                  key={index} // Certifique-se de fornecer uma chave única para cada elemento na lista
                   src={
                     src +
                     process.env.NEXT_PUBLIC_GALERIA_FOLDER +
                     galeriaData[0].IdGaleria +
                     '/IMG/' +
-                    galeriaData[0].Arquivos![0].NomeArquivo
+                    item.NomeArquivo
                   }
                   width={500}
                   height={500}
                   alt=''
-                  className='w-1/4 rounded-customMd object-cover'
+                  className='w-full object-cover h-full'
                 />
-                <div className='flex w-2/4 flex-grow flex-col p-2'>
-                  <span className='text-xl font-semibold'>
-                    {galeriaData[0].NomeGaleria}
-                  </span>
-                  <span>{galeriaData[0].BreveDescricao}</span>
-                </div>
-              </div>
+              ))}
             </Link>
-          ) : (
-            <></>
           )}
+        </div>
+        <div className='flex flex-1 flex-col justify-between gap-3'>
           {galeriaData[1] ? (
             <Link href={`GaleriaDeImagens/${galeriaData[1].IdGaleria}`}>
               <div
@@ -90,25 +61,31 @@ const GaleriaDeEventos = () => {
                 data-aos-delay='70'
                 data-aos-mirror='false'
               >
-                <img
-                  src={
-                    src +
-                    process.env.NEXT_PUBLIC_GALERIA_FOLDER +
-                    galeriaData[1].IdGaleria +
-                    '/IMG/' +
-                    galeriaData[1].Arquivos![0].NomeArquivo
-                  }
-                  width={500}
-                  height={500}
-                  alt=''
-                  className='w-1/4 rounded-customMd object-cover'
-                />
-                <div className='flex w-2/4 flex-grow flex-col p-2'>
-                  <span className='text-xl font-semibold'>
-                    {galeriaData[1].NomeGaleria}
-                  </span>
-                  <span>{galeriaData[1].BreveDescricao}</span>
-                </div>
+                {galeriaData[1].Arquivos.filter(
+                  (item: any) => item.IsDestaque
+                ).map((item: any, index: number) => (
+                  <>
+                    <img
+                      src={
+                        src +
+                        process.env.NEXT_PUBLIC_GALERIA_FOLDER +
+                        galeriaData[1].IdGaleria +
+                        '/IMG/' +
+                        item.NomeArquivo
+                      }
+                      width={500}
+                      height={500}
+                      alt=''
+                      className='w-1/4 rounded-customMd object-cover'
+                    />
+                    <div className='flex w-2/4 flex-grow flex-col p-2'>
+                      <span className='text-xl font-semibold'>
+                        {galeriaData[1].NomeGaleria}
+                      </span>
+                      <span>{galeriaData[1].BreveDescricao}</span>
+                    </div>
+                  </>
+                ))}
               </div>
             </Link>
           ) : (
@@ -122,25 +99,69 @@ const GaleriaDeEventos = () => {
                 data-aos-delay='70'
                 data-aos-mirror='false'
               >
-                <img
-                  src={
-                    src +
-                    process.env.NEXT_PUBLIC_GALERIA_FOLDER +
-                    galeriaData[2].IdGaleria +
-                    '/IMG/' +
-                    galeriaData[2].Arquivos![0].NomeArquivo
-                  }
-                  width={500}
-                  height={500}
-                  alt=''
-                  className='w-1/4 rounded-customMd object-cover'
-                />
-                <div className='flex w-2/4 flex-grow flex-col p-2'>
-                  <span className='text-xl font-semibold'>
-                    {galeriaData[2].NomeGaleria}
-                  </span>
-                  <span>{galeriaData[2].BreveDescricao}</span>
-                </div>
+                {galeriaData[2].Arquivos.filter(
+                  (item: any) => item.IsDestaque
+                ).map((item: any, index: number) => (
+                  <>
+                    <img
+                      src={
+                        src +
+                        process.env.NEXT_PUBLIC_GALERIA_FOLDER +
+                        galeriaData[2].IdGaleria +
+                        '/IMG/' +
+                        item.NomeArquivo
+                      }
+                      width={500}
+                      height={500}
+                      alt=''
+                      className='w-1/4 rounded-customMd object-cover'
+                    />
+                    <div className='flex w-2/4 flex-grow flex-col p-2'>
+                      <span className='text-xl font-semibold'>
+                        {galeriaData[2].NomeGaleria}
+                      </span>
+                      <span>{galeriaData[2].BreveDescricao}</span>
+                    </div>
+                  </>
+                ))}
+              </div>
+            </Link>
+          ) : (
+            <></>
+          )}
+          {galeriaData[3] ? (
+            <Link href={`GaleriaDeImagens/${galeriaData[3].IdGaleria}`}>
+              <div
+                className='flex min-h-[11rem] flex-1'
+                data-aos='fade-left'
+                data-aos-delay='70'
+                data-aos-mirror='false'
+              >
+                {galeriaData[3].Arquivos.filter(
+                  (item: any) => item.IsDestaque
+                ).map((item: any, index: number) => (
+                  <>
+                    <img
+                      src={
+                        src +
+                        process.env.NEXT_PUBLIC_GALERIA_FOLDER +
+                        galeriaData[3].IdGaleria +
+                        '/IMG/' +
+                        item.NomeArquivo
+                      }
+                      width={500}
+                      height={500}
+                      alt=''
+                      className='w-1/4 rounded-customMd object-cover'
+                    />
+                    <div className='flex w-2/4 flex-grow flex-col p-2'>
+                      <span className='text-xl font-semibold'>
+                        {galeriaData[3].NomeGaleria}
+                      </span>
+                      <span>{galeriaData[3].BreveDescricao}</span>
+                    </div>
+                  </>
+                ))}
               </div>
             </Link>
           ) : (

@@ -2,13 +2,8 @@
 import { fetchWrapper } from '@/services/fetchService';
 import { Root } from '@/types/types';
 import { useQuery } from '@tanstack/react-query';
-import {
-  ReactNode,
-  createContext,
-  useCallback,
-  useContext,
-  useState,
-} from 'react';
+import { ReactNode, createContext, useState } from 'react';
+import useEmpresaData from '../hooks/useDadosEmpresa';
 
 interface ConteudoProviderProps {
   children: ReactNode;
@@ -18,16 +13,10 @@ const ConteudoHomeContext = createContext<any>(null);
 
 const ConteudoProvider = ({ children }: ConteudoProviderProps) => {
   const [galeriaData, setGaleriaData] = useState<any>([]);
-  const { data, isLoading } = useQuery({
-    queryKey: ['homeComponent'],
-    queryFn: () =>
-      fetchWrapper<{ Conteudos: Root[] }>(
-        `CMSConteudo/GetByPaginaDeConteudo/${process.env.NEXT_PUBLIC_CMS_EMPRESA_ID}?nomePagina=Home`,
-        {
-          method: 'GET',
-        }
-      ),
-  });
+  const { empresaData, loading, error } = useEmpresaData(
+    'http://www.facmat.org.br/'
+  );
+  window.location.origin;
 
   function loadGaleriaData(pageNumber: number, pageSize: number) {
     fetchWrapper<any>(
@@ -37,39 +26,65 @@ const ConteudoProvider = ({ children }: ConteudoProviderProps) => {
     });
   }
 
-  function getConteudoByNomeTipoConteudo(key: string) {
-    if (data) {
-      const Conteudo = data?.Conteudos.filter((item) => {
-        return item.NomeTipoConteudo == key ? item : null;
-      });
-      return Conteudo;
-    }
+  function getByNomeConteudo(
+    key: string,
+    pagesize: number,
+    pageNumber: number,
+    isDestaqueConteudo: boolean
+  ) {
+    const { data, isLoading } = useQuery({
+      queryKey: ['homeComponent'],
+      queryFn: () =>
+        fetchWrapper<{ Conteudos: Root[] }>(
+          `CMSConteudo/GetByNomeDeConteudo/${
+            process.env.NEXT_PUBLIC_CMS_EMPRESA_ID
+          }/${key}?PageSize=${pagesize}&PageNumber=${pageNumber}${
+            isDestaqueConteudo
+              ? `&isConteudoDestaque=true`
+              : `&isConteudoDestaque=false`
+          }`,
+          {
+            method: 'GET',
+          }
+        ),
+    });
+    return data;
   }
 
-  function getConteudoByNomeTituloConteudo(key: string) {
-    if (data) {
-      const Conteudo = data?.Conteudos.filter((item) => {
-        return item.TituloConteudo == key ? item : null;
-      });
-      return Conteudo;
-    }
+  function getBanners(
+    key: string,
+    pagesize: number,
+    pageNumber: number,
+    isDestaqueConteudo: boolean
+  ) {
+    const { data, isLoading } = useQuery({
+      queryKey: [key],
+      queryFn: () =>
+        fetchWrapper<{ Conteudos: Root[] }>(
+          `CMSConteudo/GetBanners/${
+            process.env.NEXT_PUBLIC_CMS_EMPRESA_ID
+          }/${key}?PageSize=${pagesize}&PageNumber=${pageNumber}${
+            isDestaqueConteudo
+              ? `&isConteudoDestaque=true`
+              : `&isConteudoDestaque=false`
+          }`,
+          {
+            method: 'GET',
+          }
+        ),
+    });
+    return data;
   }
-
-  // function getConteudoGalerias(key: string) {
-  //   const Conteudo = GaleriaData && GaleriaData?.Conteudos.filter((item) => {
-  //     return item.TituloConteudo == key ? item : null;
-  //   });
-  //   return Conteudo;
-  // }
 
   return (
     <ConteudoHomeContext.Provider
       value={{
-        data,
-        getConteudoByNomeTipoConteudo,
-        getConteudoByNomeTituloConteudo,
+        // getConteudoByNomeTipoConteudo,
+        // getConteudoByNomeTituloConteudo,
+        getByNomeConteudo,
         loadGaleriaData,
         galeriaData,
+        getBanners,
       }}
     >
       {children}

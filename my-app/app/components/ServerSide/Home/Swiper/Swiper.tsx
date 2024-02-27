@@ -18,11 +18,10 @@ const src =
   process.env.NEXT_PUBLIC_URL_CMS! + process.env.NEXT_PUBLIC_IMAGE_FOLDER;
 
 const SwiperBanners: React.FC<any> = (conteudo) => {
-  const { getConteudoByNomeTipoConteudo } = useContext(ConteudoHomeContext);
-  const Banners: Root[] = getConteudoByNomeTipoConteudo('Banner');
-  const BannersMb: Root[] = getConteudoByNomeTipoConteudo('Banners Mobile');
-
-  return Banners && BannersMb ? (
+  const { getByNomeConteudo } = useContext(ConteudoHomeContext);
+  const Banners: Root[] = getByNomeConteudo('NOTICIA', 3, 1, true);
+  // const BannersMb: Root[] = getConteudoByNomeTipoConteudo('Banners Mobile');
+  return Banners ? (
     <div className='w-full'>
       <div className='z-10 w-full sm:hidden lg:block'>
         <Swiper
@@ -41,16 +40,22 @@ const SwiperBanners: React.FC<any> = (conteudo) => {
         >
           {Banners ? (
             Banners?.map((item) => (
-              <SwiperSlide key={item.IdConteudo}>
-                <Image
-                  src={src + item.Arquivos![0].NomeArquivo}
-                  unoptimized={true}
-                  width={100}
-                  height={0}
-                  alt=''
-                  className='w-full sm:hidden lg:block'
-                  key={item.IdConteudo}
-                />
+              <SwiperSlide key={item.IdConteudo} className='relative'>
+                <div className='max-h-[60vh] max-w-[100vw]'>
+                  <img
+                    src={src + item.Arquivos![0].NomeArquivo}
+                    width={100}
+                    height={0}
+                    alt=''
+                    className='w-full sm:hidden lg:block'
+                    key={item.IdConteudo}
+                  />
+                </div>
+                <div className='absolute left-0 top-0 flex h-full w-1/2 items-center bg-green-100 bg-opacity-70 p-8'>
+                  <span className='text-3xl leading-relaxed text-green-600'>
+                    {item.TituloConteudo}
+                  </span>
+                </div>
               </SwiperSlide>
             ))
           ) : (
@@ -73,13 +78,12 @@ const SwiperBanners: React.FC<any> = (conteudo) => {
           modules={[Autoplay, Pagination, Navigation]}
           className='mySwiper'
         >
-          {BannersMb ? (
+          {/* {BannersMb ? (
             BannersMb?.map((item) => (
               <SwiperSlide key={item.IdConteudo}>
-                <Image
+                <img
                   src={src + item.Arquivos![0].NomeArquivo}
                   alt=''
-                  unoptimized={true}
                   className='w-full sm:block lg:hidden'
                   width={100}
                   height={0}
@@ -89,7 +93,7 @@ const SwiperBanners: React.FC<any> = (conteudo) => {
             ))
           ) : (
             <></>
-          )}
+          )} */}
         </Swiper>
       </div>
     </div>

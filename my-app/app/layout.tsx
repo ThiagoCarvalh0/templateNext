@@ -35,7 +35,7 @@ export default function RootLayout({
           <div className='flex w-full justify-center bg-entidades_gray sm:hidden lg:flex'>
             <div className='flex w-[95vw] max-w-[95vw] justify-between py-1'>
               <div className='flex items-center justify-center gap-2'>
-                <Image
+                <img
                   src='/imagens/whats-icon.png'
                   width={16}
                   height={16}
@@ -58,7 +58,7 @@ export default function RootLayout({
                 </span>
               </div>
               <div className='flex items-center justify-center gap-2'>
-                <Image
+                <img
                   src='/imagens/email-icon.png'
                   width={16}
                   height={16}

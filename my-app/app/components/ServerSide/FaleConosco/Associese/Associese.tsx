@@ -282,7 +282,7 @@ const Associese = () => {
         setIsLoading(false);
       });
     } catch (e) {
-      console.log(e);
+      e;
     }
   }
 

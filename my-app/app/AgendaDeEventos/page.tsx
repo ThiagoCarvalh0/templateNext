@@ -36,10 +36,10 @@ const page = () => {
         )
           .then((res) => {
             setEventosBooked(res);
-            console.log(eventosBooked);
+            eventosBooked;
           })
           .catch((err) => {
-            console.log(err);
+            err;
           })
       : setEventosBooked([]);
   }
@@ -117,15 +117,15 @@ const page = () => {
             )
               .then((res) => {
                 setEventosBooked(res);
-                console.log(eventosBooked);
+                eventosBooked;
               })
               .catch((err) => {
-                console.log(err);
+                err;
               })
           : setEventosBooked([]);
       })
       .catch((err) => {
-        console.log(err);
+        err;
       });
   }, []);
 
@@ -173,10 +173,10 @@ const page = () => {
           )
             .then((res) => {
               setEventosBooked(res);
-              console.log(eventosBooked);
+              eventosBooked;
             })
             .catch((err) => {
-              console.log(err);
+              err;
             })
         : setEventosBooked([]);
     } else {
@@ -193,7 +193,7 @@ const page = () => {
       return dateConverted! >= startDate && dateConverted! <= endDate;
     });
 
-    console.log(filteredDates);
+    filteredDates;
 
     var idsArray: any = [];
     filteredDates.length > 0
@@ -219,7 +219,7 @@ const page = () => {
       case 0:
         return 'Dom.';
       default:
-        console.log(``);
+        ``;
     }
   }
 
@@ -235,7 +235,7 @@ const page = () => {
       />
       <div className='flex min-h-screen w-full flex-col gap-12 py-2'>
         <div className='flex w-full justify-center gap-4'>
-          <div className='flex gap-4 sm:flex-col sm:px-4 lg:w-[73rem] lg:max-w-[73rem] lg:flex-row xl:w-full xl:max-w-[80vw]'>
+          <div className='flex gap-4 sm:w-full sm:flex-col sm:px-4 lg:w-[73rem] lg:max-w-[73rem] lg:flex-row xl:w-full xl:max-w-[80vw]'>
             <aside>
               <Calendar
                 mode='single'
@@ -361,14 +361,14 @@ const page = () => {
                               <MoveUpRightIcon className='w-4' />
                             </Button>
                           </Link>
-                          <div className='flex items-center justify-center'>
-                            <span className='text-xs'>
-                              Já razlizou sua inscrição neste evento?
+                          <div className='flex items-center justify-center pt-4'>
+                            <span className='w-full text-xs'>
+                              Já realizou sua inscrição neste evento?
                             </span>
                             <Link
                               href={`/AgendaDeEventos/ConsultarInscricao/${evento.idEvento}`}
                             >
-                              <span className='ml-2 text-xs text-blue-400 underline'>
+                              <span className='ml-2 whitespace-nowrap text-xs text-blue-400 underline'>
                                 Consulte-a!
                               </span>
                             </Link>

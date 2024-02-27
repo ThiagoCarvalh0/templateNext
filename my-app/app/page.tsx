@@ -31,17 +31,17 @@ function HomeComponent() {
         <div className='flex w-[73rem] max-w-[73rem] flex-col sm:w-full sm:px-4'>
           <ServicosDestaque />
         </div>
-        <QuemSomos />
+        {/* <QuemSomos /> */}
         <div className='flex w-[73rem] max-w-[73rem] flex-col sm:w-full sm:px-4'>
-          <Swiperperview />
           <Newsletter />
         </div>
         <div className='mt-8 flex w-full items-center justify-center bg-slate-100'>
           <GaleriaDeEventos />
         </div>
         <div className='flex w-[73rem] max-w-[73rem] flex-col sm:w-full sm:px-4'>
+          {/* <Swiperperview /> */}
           <ParceriasEConveniosSwiper />
-        </div>
+        </div> 
       </div>
     </ConteudoProvider>
   );

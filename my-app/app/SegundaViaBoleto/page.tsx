@@ -132,7 +132,7 @@ export const columns: ColumnDef<Fatura>[] = [
   {
     accessorKey: 'valorTotal',
     header: () => <div className='text-right'>Valor</div>,
-    cell: ({ row }) => {
+    cell: ({ row }: any) => {
       const amount = parseFloat(row.getValue('valorTotal'));
 
       // Format the amount as a dollar amount
@@ -148,7 +148,7 @@ export const columns: ColumnDef<Fatura>[] = [
     id: 'actions',
     header: 'Ações',
     enableHiding: false,
-    cell: ({ row }) => {
+    cell: ({ row }: any) => {
       const payment = row.original;
 
       return (
@@ -165,10 +165,7 @@ export const columns: ColumnDef<Fatura>[] = [
               target='_blank'
               href={`http://localhost:63787/UI/BOLETO/form_BOLETO_IMPRIMIR_WEB.aspx?tipoImpressao=IND&chaveBoleto=${row.original.chaveBoletoWeb}&cliente=${row.original.idCliente}&tipo=BOL`}
             >
-              <DropdownMenuItem
-                className='flex cursor-pointer flex-row items-center justify-start'
-                onClick={() => console.log('é o click do boleto papae')}
-              >
+              <DropdownMenuItem className='flex cursor-pointer flex-row items-center justify-start'>
                 <FileSpreadsheet width={16} />
                 <span className='flex items-center pt-1'>Boleto</span>
               </DropdownMenuItem>

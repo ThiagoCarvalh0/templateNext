@@ -36,7 +36,7 @@ const page = () => {
 
   useEffect(() => {
     fetchWrapper<any>(
-      `CMSConteudo/GetConteudoByTipoConteudo/${process.env.NEXT_PUBLIC_CMS_EMPRESA_ID}/2140?pageSize=${pageSize}&pageNumber=${currentPage}`,
+      `CMSConteudo/GetConteudoByTipoConteudo/${process.env.NEXT_PUBLIC_CMS_EMPRESA_ID}/Noticia?pageSize=${pageSize}&pageNumber=${currentPage}`,
       {
         method: 'GET',
       }
@@ -46,9 +46,7 @@ const page = () => {
       })
       .then((Data) => {
         setNoticiasData(Data);
-        console.log(Data);
         if (Data.length > 0) {
-          console.log(Data[0].TotalCount);
           setTotalItens(Data[0].TotalCount);
         }
       });

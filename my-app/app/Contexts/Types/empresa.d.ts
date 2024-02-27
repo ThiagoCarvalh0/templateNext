@@ -1,0 +1,45 @@
+interface Empresa {
+  idEmpresa: number;
+  nomeEmpresa: string;
+  nomeFantasia: string;
+  idArquivoLogoMarca: number;
+  logradouro: string;
+  endereco: string;
+  numero: string;
+  bairro: string;
+  cidade: string;
+  uf: string;
+  cep: string;
+  complemento: string;
+  mensagemRodape: string;
+  tituloPagina: string;
+  mapaEmpresa: string;
+  horarioEntrada: string;
+  horarioEntradaSabado: string;
+  horarioSaida: string;
+  horarioSaidaSabado: string;
+  horaSaidaAlmoco: string;
+  horaVoltaAlmoco: string;
+  isFechaAlmoco: boolean;
+  isScriptAnalytics: boolean;
+  isTrabalhaSabado: boolean;
+  scriptAnalytics: string;
+  idArquivoLogoBase: number;
+  idArquivoLogoTopo: number;
+  cnpj: string;
+  idEmpresaPai: number;
+  urlSite: string;
+  idProvedorIntegracao: number;
+  corTema: string;
+  imagemNewsletterTopo: string;
+  imagemNewsletterRodape: string;
+  urlSistemaTopo: string;
+  idArquivoAssinatura: number;
+  captchaPublicKey: string | null;
+  captchaSecretKey: string | null;
+  isRecebeNoticiaDistribuida: boolean;
+  tipoProvedor: string;
+  isPossivelLocalizarSite: boolean;
+}
+
+export default Empresa;

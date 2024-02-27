@@ -31,14 +31,11 @@ const page = () => {
       })
       .then((Data) => {
         setgaleriasData(Data);
-        console.log(Data);
         if (Data.length > 0) {
-          console.log(Data[0].TotalCount);
           setTotalItens(Data[0].TotalCount);
         }
       });
   }, [currentPage]);
-  console.log(galeriasData);
 
   const pages = Math.ceil(total / pageSize);
   const src = process.env.NEXT_PUBLIC_URL_CMS!;

@@ -39,9 +39,7 @@ const page = ({ params }: { params: { id: string } }) => {
       .then((res) => {
         setComponentData(res);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   }, []);
 
   const arrayWithAdjacentInfo =
@@ -73,68 +71,30 @@ const page = ({ params }: { params: { id: string } }) => {
   const modalContent =
     selectedImageIndex !== null && arrayWithAdjacentInfo[selectedImageIndex];
 
-  return (
-    <div className='min-h-screen'>
-      <div className='py-2'>
-        <div className='flex w-full justify-center'>
-          <div className='flex w-[63rem] flex-wrap gap-4'>
-            {componentData ? (
-              arrayWithAdjacentInfo.map(({ current }: any, index: any) => (
-                <Dialog>
-                  <DialogTrigger className='flex h-60 w-60' asChild>
-                    <div className='rounded-customMd'>
-                      <img
-                        key={index}
-                        src={current}
-                        alt=''
-                        className='h-auto cursor-pointer rounded-customMd object-cover transition-all hover:scale-105 hover:duration-500 hover:zoom-in-90'
-                        onClick={() => {
-                          setSelectedImageIndex(index);
-                          console.log(current);
-                        }}
-                      />
-                    </div>
-                  </DialogTrigger>
-                  <DialogContent className='flex max-h-screen justify-center bg-white lg:max-w-fit'>
-                    <img
-                      key={index}
-                      src={current}
-                      alt=''
-                      className='h-auto object-scale-down p-2'
-                    />
-                  </DialogContent>
-                </Dialog>
-              ))
-            ) : (
-              <></>
-            )}
-          </div>
-        </div>
+  return componentData ? (
+    <div
+      id='box'
+      className='flex min-h-[70vh] w-full flex-col items-center justify-center gap-2 p-4'
+    >
+      <div className='flex w-[73rem] max-w-[73rem] flex-col sm:w-full'>
+        {componentData.Arquivos.map((item: any, index: any) => (
+          <img
+            key={index}
+            src={
+              src +
+              process.env.NEXT_PUBLIC_GALERIA_FOLDER +
+              componentData.IdGaleria +
+              '/IMG/' +
+              item.NomeArquivo
+            }
+            alt=''
+          />
+        ))}
       </div>
-      {/* {componentData ? (
-        <div
-          id='box'
-          className='flex min-h-[70vh] w-[100vw] flex-col gap-2 p-4'
-        >
-          {componentData.Arquivos.map((item: any, index: any) => (
-            <img
-              key={index}
-              src={
-                src +
-                process.env.NEXT_PUBLIC_GALERIA_FOLDER +
-                componentData.IdGaleria +
-                '/IMG/' +
-                item.NomeArquivo
-              }
-              alt=''
-            />
-          ))}
-        </div>
-      ) : (
-        <div className='h-screen'>
-          <span>Carregando...</span>
-        </div>
-      )} */}
+    </div>
+  ) : (
+    <div className='h-screen'>
+      <span>Carregando...</span>
     </div>
   );
 };

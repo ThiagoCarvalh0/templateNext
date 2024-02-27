@@ -55,10 +55,10 @@ const page = ({ params }: { params: { id: string } }) => {
     )
       .then((res) => {
         setComponentData(res);
-        console.log(res);
+        res;
       })
       .catch((err) => {
-        console.log(err);
+        err;
       });
   }, []);
 
@@ -76,7 +76,7 @@ const page = ({ params }: { params: { id: string } }) => {
   });
 
   function onInitialSubmit(values: z.infer<typeof initialFormSchema>) {
-    console.log(values);
+    values;
 
     let Body = {
       idEvento: pageId,
@@ -87,7 +87,7 @@ const page = ({ params }: { params: { id: string } }) => {
       method: 'POST',
       body: JSON.stringify(Body),
     }).then((res: any) => {
-      console.log(res);
+      res;
       if (InitialForm.formState.isSubmitSuccessful) {
         if (res.status === 200) {
           toast({
